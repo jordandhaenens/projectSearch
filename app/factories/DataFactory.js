@@ -1,50 +1,36 @@
 "use strict";
 
-app.factory('DataFactory', [function($q, $http){
+app.factory('DataFactory', [function(){
 
-
-
-
-	const getSearchParams = () => {
-		return searchParams;
+	const searchParams = {
+		uid: "",
+		tripID: "",
+		adults: "",
+		origin: "",
+		destination: "",
+		tripLength: "",
+		depDate: "",
+		outboundDept: "",
+		outboundArrival: "",
+		retDate: "",
+		indboundDept: "",
+		inboundArrival: "",
+		outboundTripTime: "",
+		inboundTripTime: "",
+		totalTime: "",
+		airline: "",
+		airPrice: "",
+		lodging: "",
+		lodgingPrice: "",
+		checkIn: "",
+		checkOut: ""
 	};
 
 
-	//
-	const setSearchParam = (obj) => {
 
+
+	return {
+		searchParams
 	};
-
-
-	//
-	const getFlights = (searchParams) => {
-
-	};
-
-
-	//
-	const getDestinations = (searchParams) => {
-
-	};
-
-
-	const getLocation = (originIATA, destinationIATA) => {
-
-	};
-
-
-	const getTripTime = (originObj, destinationObj) => {
-
-	};
-
-
-	//
-	const getLodging = (searchParams) => {
-
-	}
-
-
-
-
 
 }]);
