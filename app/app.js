@@ -1,4 +1,5 @@
 "use strict";
+console.log("App");
 
 const app = angular.module('Weekender', ['ngRoute']);
 
@@ -11,7 +12,7 @@ app.config( ($routeProvider) => {
 		controller: ''
 	})
 	.when('/home', {
-		templateUrl: '',
+		templateUrl: 'partials/HomeView.html',
 		controller: 'HomeViewCtrl'
 	})
 	.otherwise('/');

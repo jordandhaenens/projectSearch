@@ -1,0 +1,27 @@
+<div id="searchParams">
+	<input ng-model="params.depDate" type="text" placeholder="Leave On YYYY-MM-DD">
+	<input ng-model="params.retDate" type="text" placeholder="Return On YYYY-MM-DD">
+	<input ng-model="params.origin" type="text" placeholder="Origin">
+	<select ng-model="params.airPrice">
+		<option value="200">$200</option>
+		<option value="300">$300</option>
+		<option value="500">$500</option>
+		<option value="1000">$1000</option>
+		<option value="">No cap</option>
+	</select>
+	<input list="adults" placeholder="Adults">
+		<datalist ng-model="params.adults" id="adults">
+			<option value="1">
+			<option value="2">
+		</datalist>
+	<select ng-model="params.lodging" placeholder="Need Lodging?">
+		<option value="hotel">Hotel</option>
+		<option value="hostel">Hostel</option>
+		<option value="AirBnB">AirBnB</option>
+		<option value="null">Nope!</option>
+	</select>
+
+	<button ng-click="searchParams()">Begin the Magic</button>
+	<!-- <button ng-click="getDestinations()">Begin the Magic</button> -->
+
+</div>

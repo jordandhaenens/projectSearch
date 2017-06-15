@@ -1,4 +1,5 @@
 "use strict";
+console.log("DataFactory");
 
 app.factory('DataFactory', [function(){
 
