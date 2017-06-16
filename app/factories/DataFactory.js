@@ -9,7 +9,7 @@ app.factory('DataFactory', [function(){
 		adults: "",
 		origin: "",
 		destination: "",
-		tripLength: "",
+		tripLength: "10",
 		depDate: "",
 		outboundDept: "",
 		outboundArrival: "",
