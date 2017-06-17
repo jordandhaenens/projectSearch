@@ -1,10 +1,9 @@
 "use strict";
 console.log("HomeViewCtrl");
 
-app.controller('HomeViewCtrl', ['APIFactory', '$scope', 'DataFactory', '$window', function(APIFactory, $scope, DataFactory, $window){
+app.controller('HomeViewCtrl', ['API', '$scope', 'DataFactory', '$window', function(API, $scope, DataFactory, $window){
 
-	//
-	let API = APIFactory;
+
 	$scope.params = DataFactory.searchParams;
 
 	$scope.data = {

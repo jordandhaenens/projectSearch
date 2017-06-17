@@ -1,21 +1,9 @@
 "use strict";
-console.log("APIFactory");
+console.log("API");
 
-app.factory('APIFactory', ["$q", "$http", "LowFare", "Inspiration", "Location", "FBCreds",
+app.factory('API', ["$q", "$http", "LowFare", "Inspiration", "Location", "FBCreds",
 	function($q, $http, LowFare, Inspiration, Location, FBCreds){
 
-
-
-
-	// const getSearchParams = () => {
-	// 	return searchParams;
-	// };
-
-
-	// //
-	// const setSearchParam = (obj) => {
-
-	// };
 
 
 	//
@@ -23,7 +11,7 @@ app.factory('APIFactory', ["$q", "$http", "LowFare", "Inspiration", "Location", 
 		let obj = searchParams;
 
 		return $q( (resolve, reject) => {
-			$http.get(`${LowFare.databaseUrl}apikey=${LowFare.apiKey}&origin=${obj.origin}&destination=${obj.destination}&departure_date=${obj.depDate}&return_date=${obj.retDate}&adults=${obj.adults}&max_price=${obj.airPrice}&currency=usd&number_of_results=50`)
+			$http.get(`${LowFare.databaseUrl}apikey=${LowFare.apiKey}&origin=${obj.origin}&destination=${obj.destination}&departure_date=${obj.depDate}&return_date=${obj.retDate}&adults=${obj.adults}&max_price=${obj.airPrice}&currency=usd&number_of_results=50&nonstop=true`)
 			.then( (stuff) => {
 				resolve(stuff.data.results);
 			})
