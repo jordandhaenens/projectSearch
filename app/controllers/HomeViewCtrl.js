@@ -14,10 +14,7 @@ app.controller('HomeViewCtrl', ['API', '$scope', 'DataFactory', '$window', funct
 	/********************
 	Testing Area
 	********************/
-	$scope.searchParams = function(){
-		// console.log('DataFactory.searchParams', DataFactory.searchParams);
-		console.log('$scope.params', $scope.params);
-	};
+
 	/********************
 	Testing Area End
 	********************/
