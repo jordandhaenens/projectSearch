@@ -1,18 +1,28 @@
 "use strict";
 console.log("FlightsViewCtrl");
 
-app.controller('SelectedTripCtrl', ['API', '$scope', 'AuthFactory', 'DataFactory', '$window', '$location', function(API, $scope, AuthFactory, DataFactory, $window, $location){
+
+app.controller('SelectedTripCtrl', ['API', '$scope', 'DataFactory', '$window', '$location', 'AuthFactory', function(API, $scope, DataFactory, $window, $location, AuthFactory){
+
 
 
 	$scope.params = DataFactory.searchParams;
-	$scope.user = null;
+	$scope.user = AuthFactory.getUser();//this will show/hide the save btn on partial
+
 
 
 
 	$scope.saveToFB = function(){
 		//grab current uid and assign to $scope.params.uid
+		$scope.params.uid = $scope.user;
+		console.log("$scope.params", $scope.params);
 		//this should save the entire params object to FB
-		AuthFactory.getUser
+		API.addTrip($scope.params)
+		.then( function(data){
+			console.log("return from saveToFB", data);
+			//clear data
+			$scope.scrap();
+		});
 	};
 
 	$scope.scrap = function(){
@@ -21,7 +31,6 @@ app.controller('SelectedTripCtrl', ['API', '$scope', 'AuthFactory', 'DataFactory
 			tripDays: "10", //update this reset once i am using momentjs to calculate
 			totalDays: "10" //update this reset once i am using momentjs to calculate
 		};
-		// DataFactory.clearParams();
 		console.log("params at scrap fire", $scope.params);
 		console.log("DataFactory params at scrap fire", DataFactory.searchParams);
 		$location.path('/home');

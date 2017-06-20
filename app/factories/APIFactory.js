@@ -115,6 +115,76 @@ app.factory('API', ["$q", "$http", "LowFare", "Inspiration", "Location", "Hotel"
 		});
 	};
 
+    
+	//
+	const addTrip = (obj) => {
+		// add to savedTrips in FB
+		return $q( (resolve, reject) => {
+			let object = JSON.stringify(obj);
+			$http.post(`${FBCreds.databaseURL}/trips.json`, object)
+			.then( (something) => {
+				resolve(something);
+			})
+			.catch( (error) => {
+				reject(error);
+			});
+		});
+	};
+
+
+	//
+	const editTrip = (obj, tripID) => {
+		// edit savedTrip by tripID
+		let updatedObj = JSON.stringify(obj);
+		return $q( (resolve, reject) => {
+			$http.patch(`${FBCreds.databaseURL}/trips/${tripID}`, updatedObj)
+			.then( (something) => {
+				resolve(something);
+			})
+			.catch( (error) => {
+				reject(error);
+			});
+		});
+	};
+
+
+	//
+	const removeTrip = (tripID) => {
+		// remove from FB by ID
+		return $q( (resolve, reject) => {
+			$http.delete(`${FBCreds.databaseURL}/trips/${tripID}.json`)
+			.then( (something) => {
+				resolve(something);
+			})
+			.catch( (error) => {
+				reject(error);
+			});
+		});
+	};
+
+
+	//
+	const getTrips = (user) => {
+		// get all trips with user's uid
+		let trips = [];
+		return $q( (resolve, reject) => {
+			$http.get(`${FBCreds.databaseURL}/trips.json?orderBy="uid"&equalTo="${user}"`)
+			.then( (tripObj) => {
+				let tripCollection = tripObj.data;
+				console.log("tripCollection", tripCollection);
+				Object.keys(tripCollection).forEach( (key) => {
+					tripCollection[key].tripID = key;
+					trips.push(tripCollection[key]);
+				});
+				resolve(trips);
+			})
+			.catch( (error) => {
+				reject(error);
+			});
+		});
+	};
+
+
 
 
 
@@ -123,7 +193,11 @@ app.factory('API', ["$q", "$http", "LowFare", "Inspiration", "Location", "Hotel"
 		getDestinations,
 		getLocation,
 		getTripTime,
-		getLodging
+		getLodging,
+		addTrip,
+		editTrip,
+		removeTrip,
+		getTrips
 	};
 
 

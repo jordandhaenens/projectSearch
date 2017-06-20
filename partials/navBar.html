@@ -1,0 +1,8 @@
+<div ng-controller="NavbarCtrl">
+	<div>
+		<ul>
+			<li ng-show="!loggedIn" ng-click="logIn()">Login with Google</li>
+			<li ng-show="loggedIn" ng-click="logOut()">LogOut</li>
+		</ul>
+	</div>
+</div>

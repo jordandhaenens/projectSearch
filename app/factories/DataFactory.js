@@ -42,7 +42,8 @@ app.factory('DataFactory', [function(){
 	// 	lodgingPrice: "",
 	// 	lodgingPriceCap: "",
 	// 	checkIn: "",
-	// 	checkOut: ""
+	// 	checkOut: "",
+	//  pastTrip: true
 	// };
 
 	let searchParams = {
