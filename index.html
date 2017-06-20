@@ -9,7 +9,7 @@
 
 <body ng-app="Weekender">
 
-	<div id="navBar" ng-include="partials/navBar.html"></div>
+	<div id="navBar" ng-include="'partials/navBar.html'"></div>
 
 	<div ng-view class=""></div>
 
@@ -28,6 +28,9 @@
 	<script type="text/javascript" src="./app/controllers/HomeViewCtrl.js"></script>
 	<script type="text/javascript" src="./app/controllers/FlightsHotelsCtrl.js"></script>
 	<script type="text/javascript" src="./app/controllers/SelectedTripCtrl.js"></script>
+	<script type="text/javascript" src="./app/controllers/NavCtrl.js"></script>
+	<script type="text/javascript" src="./app/controllers/SavedCtrl.js"></script>
+	<script type="text/javascript" src="./app/controllers/PastCtrl.js"></script>
 
 	<!--Factories-->
 	<script type="text/javascript" src="./app/factories/APIFactory.js"></script>
