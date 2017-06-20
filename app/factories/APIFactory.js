@@ -116,6 +116,8 @@ app.factory('API', ["$q", "$http", "LowFare", "Inspiration", "Location", "Hotel"
 	};
 
 
+
+
 	return {
 		getFlights,
 		getDestinations,
