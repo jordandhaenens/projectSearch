@@ -3,51 +3,21 @@ console.log("DataFactory");
 
 app.factory('DataFactory', [function(){
 
-	const searchParams = {
-		uid: "",
-		tripID: "",
-		adults: "",
-		origin: "",
-		destination: "",
-		tripDays: "10",
-		depDate: "",
-		// outboundDept: "",
-		// outboundArrival: "",
-		retDate: "",
-		// indboundDept: "",
-		// inboundArrival: "",
-		outboundTimeLength: "",
-		inboundTimeLength: "",
-		totalTime: "",
-		// airline: "",
-		airPrice: "",
-		changePenalties: "",
-		refundable: "",
-		outboundDepTime: "",
-		outboundArrTime: "",
-		outboundFlightNum: "",
-		outboundMktAirline: "",
-		outboundAirline: "",
-		outboundOrigin: "",
-		outboundDestination: "",
-		outboundTravelClass: "",
-		inboundDepTime: "",
-		inboundArrTime: "",
-		inboundFlightNum: "",
-		inboundMktAirline: "",
-		inboundAirline: "",
-		inboundOrigin: "",
-		inboundDestination: "",
-		inboundTravelClass: "",
-
-		lodging: "",
-		lodgingPrice: "",
-		checkIn: "",
-		checkOut: ""
-	};
-
-	// obj = {
-	// 	totalPrice: "",
+	// let searchParams = {
+	// 	uid: "",
+	// 	tripID: "",
+	// 	adults: "",
+	// 	origin: "",
+	// 	destination: "",
+	// 	tripDays: "10",
+	// 	travelDays: "",
+	// 	totalDays: "10",
+	// 	depDate: "",
+	// 	retDate: "",
+	// 	outboundTimeLength: "",
+	// 	inboundTimeLength: "",
+	// 	totalTime: "",
+	// 	airPrice: "",
 	// 	changePenalties: "",
 	// 	refundable: "",
 	// 	outboundDepTime: "",
@@ -65,13 +35,36 @@ app.factory('DataFactory', [function(){
 	// 	inboundAirline: "",
 	// 	inboundOrigin: "",
 	// 	inboundDestination: "",
-	// 	inboundTravelClass: ""
+	// 	inboundTravelClass: "",
+
+	// 	lodgingOpt: "",
+	// 	lodging: false,
+	// 	lodgingPrice: "",
+	// 	lodgingPriceCap: "",
+	// 	checkIn: "",
+	// 	checkOut: ""
 	// };
 
+	let searchParams = {
+
+		lodging: false,
+		tripDays: "10",
+		totalDays: "10"
+	};
+
+	let clearParams = function(){ //this function is not resetting searchParams. Why?!?
+		searchParams = "";
+		searchParams = {
+			lodging: false,
+			tripDays: "10",
+			totalDays: "10"
+		};
+	};
 
 
 	return {
-		searchParams
+		searchParams,
+		clearParams
 	};
 
 }]);

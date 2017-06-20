@@ -1,17 +1,18 @@
 "use strict";
 console.log("API");
 
-app.factory('API', ["$q", "$http", "LowFare", "Inspiration", "Location", "FBCreds",
-	function($q, $http, LowFare, Inspiration, Location, FBCreds){
+app.factory('API', ["$q", "$http", "LowFare", "Inspiration", "Location", "Hotel", "FBCreds",
+	function($q, $http, LowFare, Inspiration, Location, Hotel, FBCreds){
 
 
 
 	//
 	const getFlights = (searchParams) => {
-		let obj = searchParams;
-
+		let params = searchParams;
+		console.log('searchParams in getFlights', params);
+		console.log("url", `${LowFare.databaseUrl}apikey=${LowFare.apiKey}&origin=${params.origin}&destination=${params.destination}&departure_date=${params.depDate}&return_date=${params.retDate}&adults=${params.adults}&max_price=${params.airPrice}&currency=usd&number_of_results=50&nonstop=true`);
 		return $q( (resolve, reject) => {
-			$http.get(`${LowFare.databaseUrl}apikey=${LowFare.apiKey}&origin=${obj.origin}&destination=${obj.destination}&departure_date=${obj.depDate}&return_date=${obj.retDate}&adults=${obj.adults}&max_price=${obj.airPrice}&currency=usd&number_of_results=50&nonstop=true`)
+			$http.get(`${LowFare.databaseUrl}apikey=${LowFare.apiKey}&origin=${params.origin}&destination=${params.destination}&departure_date=${params.depDate}&return_date=${params.retDate}&adults=${params.adults}&max_price=${params.airPrice}&currency=usd&number_of_results=50&nonstop=true`)
 			.then( (stuff) => {
 				let results = stuff.data.results;
 				// console.log("results in APIFactory", results);
@@ -53,11 +54,11 @@ app.factory('API', ["$q", "$http", "LowFare", "Inspiration", "Location", "FBCred
 
 	//
 	const getDestinations = (searchParams) => {
-		let obj = searchParams;
+		let params = searchParams;
 		console.log("searchParams passed to APIFactory", searchParams);
-		console.log("url", `${Inspiration.databaseUrl}apikey=${Inspiration.apiKey}&origin=${obj.origin}&departure_date=${obj.depDate}&duration=${obj.tripDays}&max_price=${obj.airPrice}`);
+		// console.log("url", `${Inspiration.databaseUrl}apikey=${Inspiration.apiKey}&origin=${obj.origin}&departure_date=${obj.depDate}&duration=${obj.totalDays}&max_price=${obj.airPrice}`);
 		return $q( (resolve, reject) => {
-			$http.get(`${Inspiration.databaseUrl}apikey=${Inspiration.apiKey}&origin=${obj.origin}&departure_date=${obj.depDate}&duration=${obj.tripDays}&max_price=${obj.airPrice}`)
+			$http.get(`${Inspiration.databaseUrl}apikey=${Inspiration.apiKey}&origin=${params.origin}&departure_date=${params.depDate}&duration=${params.totalDays}&max_price=${params.airPrice}`)
 			.then( (stuff) => {
 				resolve(stuff.data);
 			})
@@ -69,18 +70,49 @@ app.factory('API', ["$q", "$http", "LowFare", "Inspiration", "Location", "FBCred
 
 
 	const getLocation = (originIATA, destinationIATA) => {
-
+		//this function is for getting the timezones of origin and destination points. This info will be passed to getTripTime()
 	};
 
 
 	const getTripTime = (originObj, destinationObj) => {
-
+		//this will return total trip time
 	};
 
 
 	//
 	const getLodging = (searchParams) => {
-
+		//this function will return lodging from the amadeus API
+		let params = searchParams;
+		console.log("searchParams passed to APIFactory", searchParams);
+		//params.outboundArrTime (check-in date) should be filtered through momentjs to give a date sans time
+		//params.inboundDepTime (check-out date) should be filtered through momentjs to give a date sans time
+		let dailyRate = (params.lodgingPriceCap / params.tripDays);
+		return $q( (resolve, reject) => {
+			$http.get(`${Hotel.databaseUrl}apikey=${Hotel.apiKey}&location=${params.destination}&check_in=${params.depDate}&check_out=${params.retDate}&radius=42&lang=en&max_rate=${dailyRate}&number_of_results=20`)
+			.then( (stuff) => {
+				let results = stuff.data.results;
+				let arr = [];
+				let obj = {};
+				results.forEach(function(currObj){
+					obj = {
+						propertyName: currObj.property_name,
+						street: currObj.address.line1,
+						city: currObj.address.city,
+						state: currObj.address.region,
+						beds: currObj.rooms[0].room_type_info.number_of_beds + " " + currObj.rooms[0].room_type_info.bed_type,
+						roomType: currObj.rooms[0].room_type_info.room_type,
+						lodgingPrice: currObj.total_price.amount,
+						checkIn: "",//use the filtered params.outboundArrTime for check-in date
+						checkOut: ""//use the filtered params.inboundDepTime for check-out date
+					};
+					arr.push(obj);
+				});
+				resolve(arr);
+			})
+			.catch( (error) => {
+				reject(error);
+			});
+		});
 	};
 
 

@@ -29,6 +29,9 @@ app.controller('HomeViewCtrl', ['API', '$scope', 'DataFactory', '$window', funct
 	};
 
 	$scope.getDestinations = function(){
+		if ($scope.params.lodgingOpt !== "null"){
+			$scope.params.lodging = true;
+		}
 		API.getDestinations($scope.params)
 		.then( (response) => {
 			$scope.data.fullData = response;
