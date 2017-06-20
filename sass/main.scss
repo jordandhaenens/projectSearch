@@ -27,7 +27,8 @@ html, body {
 	overflow: scroll;
 }
 
-.searchParams {
+#searchParams {
+	display: block;
 	/*justify-content: space-around;*/
 	border: solid 1px black;
 	/*width: 30%;

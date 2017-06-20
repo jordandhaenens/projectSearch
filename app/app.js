@@ -17,7 +17,11 @@ app.config( ($routeProvider) => {
 	})
 	.when('/flightsView', {
 		templateUrl: 'partials/FlightsView.html',
-		controller: 'FlightsViewCtrl'
+		controller: 'FlightsHotelsCtrl'
+	})
+	.when('/selectedTripView', {
+		templateUrl: 'partials/SelectedTrip.html',
+		controller: 'SelectedTripCtrl'
 	})
 	.otherwise('/');
 });

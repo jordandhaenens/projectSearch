@@ -1,4 +1,4 @@
-<div id="flightsContainer">
+<!-- <div id="flightsContainer">
 	<div id="flightsResults">
 		<div ng-repeat="obj in data.flights" class="">
 			<div ng-class="{selected: data.selected==obj}" ng-click="updateParams(obj); data.selected=obj">
@@ -24,8 +24,49 @@
 			</div>
 		</div>
 	</div>
-	<a href="#!/selectedFlightView">
+	<a href="#!/selectedTripView">
 		<input type="button" class="nextBtn" value="Next">
 	</a>
+</div> -->
+
+
+
+<div id="resultsContainer">
+	<div ng-hide="hideFlights" id="flightsResults">
+		<div ng-repeat="obj in data.flights" class="">
+			<div ng-class="{selected: data.selected==obj}" ng-click="updateParams(obj); data.selected=obj">
+				<h4>${{obj.airPrice}}</h4>
+				<p>Change Penalties: {{obj.changePenalties}} Refundable: {{obj.refundable}}</p>
+				<h5>Outbound Flight</h5>
+				<p>{{obj.outboundOrigin}} to {{obj.outboundDestination}}</p>
+				<p>Departs: {{obj.outboundDepTime}} Arrives: {{obj.outboundArrTime}}</p>
+				<p>Operated by {{obj.outboundAirline}}</p>
+				<p>Sold by {{obj.outboundMktAirline}}</p>
+				<p>Flight Number {{obj.outboundFlightNum}}</p>
+				<p>Travel class {{obj.outboundTravelClass}}</p>
+
+				<h4>Inbound Flight</h4>
+				<p>{{obj.inboundOrigin}} to {{obj.inboundDestination}}</p>
+				<p>Departs: {{obj.inboundDepTime}} Arrives: {{obj.inboundArrTime}}</p>
+				<p>Operated by {{obj.inboundAirline}}</p>
+				<p>Sold by {{obj.inboundMktAirline}}</p>
+				<p>Flight Number {{obj.inboundFlightNum}}</p>
+				<p>Travel class {{obj.inboundTravelClass}}</p>
+			</div>
+		</div>
+	</div>
+
+	<div ng-hide="hideHotels" id="hotelResults">
+		<div ng-repeat="obj in data.lodging" class="">
+			<div ng-class="{selected: data.selected==obj}" ng-click="updateParams(obj); data.selected=obj">
+				<h4>{{obj.propertyName}}</h4>
+				<h4>${{obj.lodgingPrice}} Total</h4>
+				<p>{{obj.street}} {{obj.city}}, {{obj.state}}</p>
+				<p>{{obj.beds}}. {{obj.roomType}}</p>
+				<p>Check-In: {{obj.checkIn}} Check-Out: {{obj.checkOut}}</p>
+			</div>
+		</div>
+	</div>
+	<input ng-click="params.lodging ? getLodging() : selectedTripView()" type="button" class="nextBtn" value="Next">
 </div>
 
