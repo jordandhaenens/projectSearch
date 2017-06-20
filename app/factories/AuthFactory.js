@@ -50,4 +50,5 @@ app.factory('AuthFactory', [function(){
     	isAuthenticated,
     	logoutUser
     };
+
 }]);

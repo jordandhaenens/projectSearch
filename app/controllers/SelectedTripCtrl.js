@@ -1,11 +1,15 @@
 "use strict";
 console.log("FlightsViewCtrl");
 
+
 app.controller('SelectedTripCtrl', ['API', '$scope', 'DataFactory', '$window', '$location', 'AuthFactory', function(API, $scope, DataFactory, $window, $location, AuthFactory){
+
 
 
 	$scope.params = DataFactory.searchParams;
 	$scope.user = AuthFactory.getUser();//this will show/hide the save btn on partial
+
+
 
 
 	$scope.saveToFB = function(){

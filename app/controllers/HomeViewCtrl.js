@@ -5,6 +5,7 @@ app.controller('HomeViewCtrl', ['API', '$scope', 'DataFactory', '$window', funct
 
 
 	$scope.params = DataFactory.searchParams;
+	console.log("searchParams in HomeViewCtrl", $scope.params);
 
 	$scope.data = {
 		selected: null,

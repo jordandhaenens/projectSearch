@@ -115,7 +115,7 @@ app.factory('API', ["$q", "$http", "LowFare", "Inspiration", "Location", "Hotel"
 		});
 	};
 
-
+    
 	//
 	const addTrip = (obj) => {
 		// add to savedTrips in FB
@@ -183,8 +183,6 @@ app.factory('API', ["$q", "$http", "LowFare", "Inspiration", "Location", "Hotel"
 			});
 		});
 	};
-
-
 
 
 

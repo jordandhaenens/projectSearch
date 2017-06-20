@@ -53,19 +53,19 @@ app.factory('DataFactory', [function(){
 		totalDays: "10"
 	};
 
-	let clearParams = function(){ //this function is not resetting searchParams. Why?!?
-		searchParams = "";
-		searchParams = {
-			lodging: false,
-			tripDays: "10",
-			totalDays: "10"
-		};
-	};
+	// let clearParams = function(){ //this function is not resetting searchParams. Why?!?
+	// 	// searchParams = "";
+	// 	searchParams = {
+	// 		lodging: false,
+	// 		tripDays: "10",
+	// 		totalDays: "10"
+	// 	};
+	// 	console.log("searchParams in DataFactory", searchParams);
+	// };
 
 
 	return {
-		searchParams,
-		clearParams
+		searchParams
 	};
 
 }]);
