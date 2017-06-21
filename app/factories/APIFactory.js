@@ -55,7 +55,7 @@ app.factory('API', ["$q", "$http", "LowFare", "Inspiration", "Location", "Hotel"
 	//
 	const getDestinations = (searchParams) => {
 		let params = searchParams;
-		console.log("searchParams passed to APIFactory", searchParams);
+		console.log("searchParams passed to getDestinations", searchParams);
 		// console.log("url", `${Inspiration.databaseUrl}apikey=${Inspiration.apiKey}&origin=${obj.origin}&departure_date=${obj.depDate}&duration=${obj.totalDays}&max_price=${obj.airPrice}`);
 		return $q( (resolve, reject) => {
 			$http.get(`${Inspiration.databaseUrl}apikey=${Inspiration.apiKey}&origin=${params.origin}&departure_date=${params.depDate}&duration=${params.totalDays}&max_price=${params.airPrice}`)
@@ -115,12 +115,14 @@ app.factory('API', ["$q", "$http", "LowFare", "Inspiration", "Location", "Hotel"
 		});
 	};
 
-    
+
 	//
 	const addTrip = (obj) => {
 		// add to savedTrips in FB
+		console.log("obj being passed to addTrip()", obj);
 		return $q( (resolve, reject) => {
 			let object = JSON.stringify(obj);
+			console.log("stringified object addTrip()", object);
 			$http.post(`${FBCreds.databaseURL}/trips.json`, object)
 			.then( (something) => {
 				resolve(something);

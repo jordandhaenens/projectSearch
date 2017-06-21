@@ -5,7 +5,9 @@
 app.controller('NavbarCtrl', ['AuthFactory', '$scope', '$location', function(AuthFactory, $scope, $location) {
 	console.log('NavbarCtrl loaded');
 
-	$scope.loggedIn = false;
+	$scope.loggedIn = false; //this is not binding when logIn() fires
+	// $scope.loggedIn = AuthFactory.currentUser;
+	console.log("$scope.loggedIn at page load", $scope.loggedIn);
 
 
 	//
@@ -16,7 +18,6 @@ app.controller('NavbarCtrl', ['AuthFactory', '$scope', '$location', function(Aut
 	    } else {
 	      $scope.loggedIn = false;
 	      console.log("currentUser logged in?", $scope.loggedIn);
-	      // $window.location.href = "#!/";
 	    }
 	});
 
@@ -27,12 +28,9 @@ app.controller('NavbarCtrl', ['AuthFactory', '$scope', '$location', function(Aut
 		console.log("login running");
 		AuthFactory.loginWithProvider()
 		.then(function(data){
+			console.log("$scope.loggedIn", $scope.loggedIn);
 			AuthFactory.isAuthenticated();
-			// AuthFactory.getUser();
-			// var user = data.user.uid;
-			console.log("data from googleLogIn", data);
-			// $location.path('/home');
-			// $scope.$apply();
+			// console.log("data from googleLogIn", data);
 		})
 		.catch(function(error){
 			console.log(error);

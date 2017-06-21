@@ -1,5 +1,11 @@
 {
 	"savedTrips": "",
 	"pastTrips": "",
+	"trips": {
+		"trip1": {
+			"destination": "bna",
+			"name": "jordan"
+		}
+	},
 	"users": ""
 }

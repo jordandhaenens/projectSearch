@@ -7,6 +7,7 @@ app.controller('SelectedTripCtrl', ['API', '$scope', 'DataFactory', '$window', '
 
 
 	$scope.params = DataFactory.searchParams;
+	console.log("searchParams in SelectedTripCtrl", $scope.params);
 	$scope.user = AuthFactory.getUser();//this will show/hide the save btn on partial
 
 
@@ -15,12 +16,12 @@ app.controller('SelectedTripCtrl', ['API', '$scope', 'DataFactory', '$window', '
 	$scope.saveToFB = function(){
 		//grab current uid and assign to $scope.params.uid
 		$scope.params.uid = $scope.user;
-		console.log("$scope.params", $scope.params);
+		console.log("$scope.params before being passed to addTrip()", $scope.params);
 		//this should save the entire params object to FB
 		API.addTrip($scope.params)
 		.then( function(data){
 			console.log("return from saveToFB", data);
-			//clear data
+			//clear params and head home
 			$scope.scrap();
 		});
 	};
