@@ -7,7 +7,8 @@ app.controller('FlightsHotelsCtrl', ['API', '$scope', 'DataFactory', '$window', 
 	$scope.params = DataFactory.searchParams;
 	console.log("searchParams in FlightsHotelsCtrl", $scope.params);
 	$scope.hideHotels = true;
-	$scope.hideFlights = '';
+	// $scope.hideFlights = '';
+	$scope.hideFlights = false;
 
 	$scope.data = {
 		selected: null,
@@ -27,8 +28,10 @@ app.controller('FlightsHotelsCtrl', ['API', '$scope', 'DataFactory', '$window', 
 	};
 
 	$scope.getLodging = function() {
-		$scope.hideFlights = $scope.params.lodging;
-		$scope.params.lodging = false;
+		// $scope.hideFlights = $scope.params.lodging;
+		$scope.hideFlights = true;
+		// $scope.params.lodging = false;
+		$scope.params.lodgingSearch = false;
 		$scope.hideHotels = false;
 		API.getLodging($scope.params)
 		.then( (response) => {
@@ -40,12 +43,12 @@ app.controller('FlightsHotelsCtrl', ['API', '$scope', 'DataFactory', '$window', 
 
 
 	$scope.updateParams = function(obj) { //obj is the selected flight or hotel from the partial
-		let troll = "$$hashKey";
+		// let troll = "$$hashKey";
 		Object.keys(obj).forEach(function(keyVal){
 		console.log('keyVal added to searchParams', keyVal);
-			if (keyVal !== troll) {
+			// if (keyVal !== troll) {
 				$scope.params[keyVal] = obj[keyVal];
-			}
+			// }
 		});
 		console.log("updated $scope.params", $scope.params);
 	};

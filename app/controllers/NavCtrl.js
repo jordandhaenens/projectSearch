@@ -2,7 +2,7 @@
 
 
 
-app.controller('NavbarCtrl', ['AuthFactory', '$scope', '$location', function(AuthFactory, $scope, $location) {
+app.controller('NavbarCtrl', ['AuthFactory', '$scope', '$location', 'DataFactory', function(AuthFactory, $scope, $location, DataFactory) {
 	console.log('NavbarCtrl loaded');
 
 	$scope.loggedIn = false; //this is not binding when logIn() fires
@@ -14,9 +14,11 @@ app.controller('NavbarCtrl', ['AuthFactory', '$scope', '$location', function(Aut
 	firebase.auth().onAuthStateChanged(function (user) {  //returning a promise to us and checking if there is a user
 	    if (user) {
 	      $scope.loggedIn = true;
+	      $scope.$apply();
 	      console.log("currentUser logged in?", user, $scope.loggedIn);
 	    } else {
 	      $scope.loggedIn = false;
+	      $scope.$apply();
 	      console.log("currentUser logged in?", $scope.loggedIn);
 	    }
 	});
@@ -30,6 +32,7 @@ app.controller('NavbarCtrl', ['AuthFactory', '$scope', '$location', function(Aut
 		.then(function(data){
 			console.log("$scope.loggedIn", $scope.loggedIn);
 			AuthFactory.isAuthenticated();
+			$scope.$apply(); //this forces the partial to update $scope
 			// console.log("data from googleLogIn", data);
 		})
 		.catch(function(error){
@@ -50,6 +53,24 @@ app.controller('NavbarCtrl', ['AuthFactory', '$scope', '$location', function(Aut
 			console.log('There was an error logging user out');
 		});
 
+	};
+
+
+	//
+	$scope.savedTrips = function(){
+		$location.path('/savedView');
+	};
+
+
+	//
+	$scope.goHome = function(){
+		DataFactory.searchParams = {
+			lodging: false,
+			hotelDays: "10", //update this reset once i am using momentjs to calculate. This will be set in HomeViewCtrl
+			totalDays: "10" //update this reset once i am using momentjs to calculate. This will be set in HomeViewCtrl
+		};
+		console.log("DataFactory params at scrap fire", DataFactory.searchParams);
+		$location.path('/home');
 	};
 
 

@@ -1,5 +1,30 @@
 <div class="container">
-	<div
+	<div class="resultsContainer">
+		<div ng-repeat="params in data">
+			<h4>${{params.airPrice}}</h4>
+			<p>Change Penalties: {{params.changePenalties}} Refundable: {{params.refundable}}</p>
+			<h4>Outbound Flight</h4>
+			<p>{{params.outboundOrigin}} to {{params.outboundDestination}} Departs at: {{params.outboundDepTime}} Arrives at: {{params.outboundArrTime}}</p>
+			<p>Operated by {{params.outboundAirline}} and Sold by {{params.outboundMktAirline}}</p>
+			<p>Flight Number {{params.outboundFlightNum}} Travel class {{params.outboundTravelClass}}</p>
+			<hr>
+			<h4>Inbound Flight</h4>
+			<p>{{params.inboundOrigin}} to {{params.inboundDestination}} Departs at: {{params.inboundDepTime}} Arrives at: {{params.inboundArrTime}}</p>
+			<p>Operated by {{params.inboundAirline}} and Sold by {{params.inboundMktAirline}}</p>
+			<p>Flight Number {{params.inboundFlightNum}} Travel class {{params.inboundTravelClass}}</p>
+			<div ng-hide>
+				<h4>{{params.propertyName}}</h4>
+				<h4>${{params.lodgingPrice}} Total</h4>
+				<p>{{params.street}} {{params.city}}, {{params.state}}</p>
+				<p>{{params.beds}}. {{params.roomType}}</p>
+				<p>Check-In: {{params.checkIn}} Check-Out: {{params.checkOut}}</p>
+			</div>
+			<input ng-click="deleteTrip(params)" type="button" value="Delete Trip">
+			<input ng-click="editTrip(params)" type="button" value="Edit Lodging">
+			<input ng-click="removeLodging(params)" type="button" value="Remove Lodging">
+			<input type="button" value="Purchase">
+		</div>
+	</div>
 
 
 </div>

@@ -56,7 +56,7 @@
 			</div>
 		</div>
 
-		<div ng-hide="hideHotels" id="hotelResults">
+		<div ng-hide="hideHotels" class="hotelResults">
 			<div ng-repeat="obj in data.lodging" class="">
 				<div ng-class="{selected: data.selected==obj}" ng-click="updateParams(obj); data.selected=obj">
 					<h4>{{obj.propertyName}}</h4>
@@ -67,7 +67,7 @@
 				</div>
 			</div>
 		</div>
-		<input ng-click="params.lodging ? getLodging() : selectedTripView()" type="button" class="nextBtn" value="Next">
+		<input ng-click="params.lodgingSearch ? getLodging() : selectedTripView()" type="button" class="nextBtn" value="Next">
 	</div>
 
 </div>

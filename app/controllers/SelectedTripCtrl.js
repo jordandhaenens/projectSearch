@@ -11,7 +11,19 @@ app.controller('SelectedTripCtrl', ['API', '$scope', 'DataFactory', '$window', '
 	$scope.user = AuthFactory.getUser();//this will show/hide the save btn on partial
 
 
-
+	$scope.editToFB = function(){
+		API.editTrip($scope.params, $scope.params.tripID)
+		.then( function(data) {
+			console.log("return from editToFB", data);
+			DataFactory.searchParams = {
+			lodging: false,
+			hotelDays: "10", //update this reset once i am using momentjs to calculate. This will be set in HomeViewCtrl
+			totalDays: "10" //update this reset once i am using momentjs to calculate. This will be set in HomeViewCtrl
+			};
+			console.log("DataFactory params at scrap fire", DataFactory.searchParams);
+			$location.path('/savedView');
+		});
+	};
 
 	$scope.saveToFB = function(){
 		//grab current uid and assign to $scope.params.uid
