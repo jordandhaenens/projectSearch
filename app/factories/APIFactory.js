@@ -5,7 +5,6 @@ app.factory('API', ["$q", "$http", "LowFare", "Inspiration", "Location", "Hotel"
 	function($q, $http, LowFare, Inspiration, Location, Hotel, FBCreds){
 
 
-
 	//
 	const getFlights = (searchParams) => {
 		let params = searchParams;
@@ -86,7 +85,7 @@ app.factory('API', ["$q", "$http", "LowFare", "Inspiration", "Location", "Hotel"
 		console.log("searchParams passed to APIFactory", searchParams);
 		//params.outboundArrTime (check-in date) should be filtered through momentjs to give a date sans time
 		//params.inboundDepTime (check-out date) should be filtered through momentjs to give a date sans time
-		let dailyRate = (params.lodgingPriceCap / params.tripDays);
+		let dailyRate = (params.lodgingPriceCap / params.hotelDays);
 		return $q( (resolve, reject) => {
 			$http.get(`${Hotel.databaseUrl}apikey=${Hotel.apiKey}&location=${params.destination}&check_in=${params.depDate}&check_out=${params.retDate}&radius=42&lang=en&max_rate=${dailyRate}&number_of_results=20`)
 			.then( (stuff) => {
