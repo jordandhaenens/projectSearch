@@ -117,6 +117,7 @@ app.factory('API', ["$q", "$http", "LowFare", "Inspiration", "Location", "Hotel"
 
 	//
 	const addTrip = (obj) => {
+		delete obj.$$hashKey;
 		// add to savedTrips in FB
 		console.log("obj being passed to addTrip()", obj);
 		return $q( (resolve, reject) => {
@@ -135,10 +136,11 @@ app.factory('API', ["$q", "$http", "LowFare", "Inspiration", "Location", "Hotel"
 
 	//
 	const editTrip = (obj, tripID) => {
+		delete obj.$$hashKey;
 		// edit savedTrip by tripID
 		let updatedObj = JSON.stringify(obj);
 		return $q( (resolve, reject) => {
-			$http.patch(`${FBCreds.databaseURL}/trips/${tripID}`, updatedObj)
+			$http.patch(`${FBCreds.databaseURL}/trips/${tripID}.json`, updatedObj)
 			.then( (something) => {
 				resolve(something);
 			})

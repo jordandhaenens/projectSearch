@@ -2,9 +2,64 @@
 
 	<div class="flexy">
 
-		<div id="searchParams">
-			<input ng-model="params.depDate" type="text" placeholder="Leave YYYY-MM-DD"><br>
-			<input ng-model="params.retDate" type="text" placeholder="Return YYYY-MM-DD"><br>
+		<div class="searchParams">
+			<label for="inputCreated">Choose a Departure Date</label>
+			<input input-date
+			    type="text"
+			    name="depart"
+			    id="inputCreated"
+			    ng-model="depart"
+			    container=""
+			    format="dd/mm/yyyy"
+			    months-full="{{ month }}"
+			    months-short="{{ monthShort }}"
+			    weekdays-full="{{ weekdaysFull }}"
+			    weekdays-short="{{ weekdaysShort }}"
+			    weekdays-letter="{{ weekdaysLetter }}"
+			    disable="disable"
+			    min="{{ minDate }}"
+			    max="{{ maxDate }}"
+			    today="today"
+			    first-day="1"
+			    clear="clear"
+			    close="close"
+			    select-years="15"
+			    on-start="onStart()"
+			    on-render="onRender()"
+			    on-open="onOpen()"
+			    on-close="onClose()"
+			    on-set="onSet()"
+			    on-stop="onStop()" />
+
+			    <label for="returnDate">Choose a Return Date</label>
+				<input input-date
+				    type="text"
+				    name="return"
+				    id="returnDate"
+				    ng-model="return"
+				    container=""
+				    format="dd/mm/yyyy"
+				    months-full="{{ month }}"
+				    months-short="{{ monthShort }}"
+				    weekdays-full="{{ weekdaysFull }}"
+				    weekdays-short="{{ weekdaysShort }}"
+				    weekdays-letter="{{ weekdaysLetter }}"
+				    disable="disable"
+				    min="{{ minDate }}"
+				    max="{{ maxDate }}"
+				    today="today"
+				    first-day="1"
+				    clear="clear"
+				    close="close"
+				    select-years="15"
+				    on-start="onStart()"
+				    on-render="onRender()"
+				    on-open="onOpen()"
+				    on-close="onClose()"
+				    on-set="onSet()"
+				    on-stop="onStop()" />
+			<!-- <input ng-model="params.depDate" type="text" placeholder="Leave YYYY-MM-DD"><br>
+			<input ng-model="params.retDate" type="text" placeholder="Return YYYY-MM-DD"><br> -->
 			<input ng-model="params.origin" type="text" placeholder="Origin"><br>
 			<label>Flights Price Cap</label><br>
 			<select ng-model="params.airPrice">
@@ -20,11 +75,11 @@
 					<option value="2">
 				</datalist><br>
 			<label>Need Lodging?</label><br>
-			<select ng-model="params.lodgingOpt">
+			<select ng-model="params.lodgingOpt" value="">
 				<option value="hotel">Hotel</option>
 				<!-- <option value="hostel">Hostel</option>
 				<option value="AirBnB">AirBnB</option> -->
-				<option value="null">Nope!</option>
+				<option value="">Nope!</option>
 			</select><br>
 			<label>Lodging Price Cap</label><br>
 			<select ng-model="params.lodgingPriceCap" placeholder="Lodging Price Cap">

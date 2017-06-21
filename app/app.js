@@ -1,7 +1,7 @@
 "use strict";
 console.log("App");
 
-const app = angular.module('Weekender', ['ngRoute']);
+const app = angular.module('Weekender', ['ngRoute', 'ui.materialize']);
 
 let isAuth = (AuthFactory) => new Promise ( (resolve, reject) => {
 	AuthFactory.isAuthenticated()
@@ -34,6 +34,16 @@ app.config( ($routeProvider) => {
 	.when('/selectedTripView', {
 		templateUrl: 'partials/SelectedTrip.html',
 		controller: 'SelectedTripCtrl'
+	})
+	.when('/savedView', {
+		templateUrl: 'partials/savedView.html',
+		controller: 'SavedCtrl',
+		resolve: {isAuth}
+	})
+	.when('/editLodging', {
+		templateUrl: 'partials/editLodgingView.html',
+		controller: 'EditLodgingCtrl',
+		resolve: {isAuth}
 	})
 	.otherwise('/home');
 });
