@@ -5,7 +5,6 @@ app.factory('API', ["$q", "$http", "LowFare", "Inspiration", "Location", "Hotel"
 	function($q, $http, LowFare, Inspiration, Location, Hotel, FBCreds){
 
 
-
 	//
 	const getFlights = (searchParams) => {
 		let params = searchParams;
@@ -55,7 +54,7 @@ app.factory('API', ["$q", "$http", "LowFare", "Inspiration", "Location", "Hotel"
 	//
 	const getDestinations = (searchParams) => {
 		let params = searchParams;
-		console.log("searchParams passed to APIFactory", searchParams);
+		console.log("searchParams passed to getDestinations", searchParams);
 		// console.log("url", `${Inspiration.databaseUrl}apikey=${Inspiration.apiKey}&origin=${obj.origin}&departure_date=${obj.depDate}&duration=${obj.totalDays}&max_price=${obj.airPrice}`);
 		return $q( (resolve, reject) => {
 			$http.get(`${Inspiration.databaseUrl}apikey=${Inspiration.apiKey}&origin=${params.origin}&departure_date=${params.depDate}&duration=${params.totalDays}&max_price=${params.airPrice}`)
@@ -86,7 +85,7 @@ app.factory('API', ["$q", "$http", "LowFare", "Inspiration", "Location", "Hotel"
 		console.log("searchParams passed to APIFactory", searchParams);
 		//params.outboundArrTime (check-in date) should be filtered through momentjs to give a date sans time
 		//params.inboundDepTime (check-out date) should be filtered through momentjs to give a date sans time
-		let dailyRate = (params.lodgingPriceCap / params.tripDays);
+		let dailyRate = (params.lodgingPriceCap / params.hotelDays);
 		return $q( (resolve, reject) => {
 			$http.get(`${Hotel.databaseUrl}apikey=${Hotel.apiKey}&location=${params.destination}&check_in=${params.depDate}&check_out=${params.retDate}&radius=42&lang=en&max_rate=${dailyRate}&number_of_results=20`)
 			.then( (stuff) => {
@@ -115,12 +114,14 @@ app.factory('API', ["$q", "$http", "LowFare", "Inspiration", "Location", "Hotel"
 		});
 	};
 
-    
+
 	//
 	const addTrip = (obj) => {
 		// add to savedTrips in FB
+		console.log("obj being passed to addTrip()", obj);
 		return $q( (resolve, reject) => {
 			let object = JSON.stringify(obj);
+			console.log("stringified object addTrip()", object);
 			$http.post(`${FBCreds.databaseURL}/trips.json`, object)
 			.then( (something) => {
 				resolve(something);

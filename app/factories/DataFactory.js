@@ -9,7 +9,7 @@ app.factory('DataFactory', [function(){
 	// 	adults: "",
 	// 	origin: "",
 	// 	destination: "",
-	// 	tripDays: "10",
+	// 	hotelDays: "10",
 	// 	travelDays: "",
 	// 	totalDays: "10",
 	// 	depDate: "",
@@ -49,7 +49,7 @@ app.factory('DataFactory', [function(){
 	let searchParams = {
 
 		lodging: false,
-		tripDays: "10",
+		hotelDays: "10",
 		totalDays: "10"
 	};
 

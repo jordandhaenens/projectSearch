@@ -48,7 +48,8 @@ app.factory('AuthFactory', [function(){
     	getUser,
     	loginWithProvider,
     	isAuthenticated,
-    	logoutUser
+    	logoutUser,
+        currentUser
     };
 
 }]);

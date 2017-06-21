@@ -5,6 +5,7 @@ app.controller('FlightsHotelsCtrl', ['API', '$scope', 'DataFactory', '$window', 
 
 
 	$scope.params = DataFactory.searchParams;
+	console.log("searchParams in FlightsHotelsCtrl", $scope.params);
 	$scope.hideHotels = true;
 	$scope.hideFlights = '';
 
@@ -16,7 +17,7 @@ app.controller('FlightsHotelsCtrl', ['API', '$scope', 'DataFactory', '$window', 
 
 
 	let getFlights = function(){
-		console.log("$scope.params on FlightsViewCtrl", $scope.params);
+		console.log("$scope.params on when getFlights()", $scope.params);
 		API.getFlights($scope.params)
 		// API.getFlights(testParams)
 		.then( (response) => {
@@ -38,9 +39,13 @@ app.controller('FlightsHotelsCtrl', ['API', '$scope', 'DataFactory', '$window', 
 	};
 
 
-	$scope.updateParams = function(obj) { //obj is the selected flight from the partial
+	$scope.updateParams = function(obj) { //obj is the selected flight or hotel from the partial
+		let troll = "$$hashKey";
 		Object.keys(obj).forEach(function(keyVal){
-		$scope.params[keyVal] = obj[keyVal];
+		console.log('keyVal added to searchParams', keyVal);
+			if (keyVal !== troll) {
+				$scope.params[keyVal] = obj[keyVal];
+			}
 		});
 		console.log("updated $scope.params", $scope.params);
 	};

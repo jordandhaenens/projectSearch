@@ -12,17 +12,6 @@ app.controller('HomeViewCtrl', ['API', '$scope', 'DataFactory', '$window', funct
 		fullData: "", //this gives access to the currency
 		flights: ""
 	};
-	/********************
-	Testing Area
-	********************/
-
-	/********************
-	Testing Area End
-	********************/
-	// $scope.addClass = (event) => {
-	// 	console.log("event", event);
-	// 	$(event.currentTarget).addClass("selected");
-	// };
 
 	$scope.updateParams = (something) => {
 		$scope.params.destination = something;
@@ -44,7 +33,7 @@ app.controller('HomeViewCtrl', ['API', '$scope', 'DataFactory', '$window', funct
 
 
 
-	//Subtract retDate date obj from depDate date obj to get duration and padd to $scope.params
+	//Subtract retDate date obj from depDate date obj to get duration and add to $scope.params
 	// $scope.params.duration = duration($scope.params.retDate, $scope.params.depDate);
 
 	// let duration = (retDate, depDate) => {

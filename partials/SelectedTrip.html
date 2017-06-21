@@ -20,7 +20,7 @@
 		<p>Travel class {{params.inboundTravelClass}}</p>
 	</div>
 
-	<div id="selectedHotel">
+	<div ng-show="params.lodgingOpt" id="selectedHotel">
 		<h4>{{params.propertyName}}</h4>
 		<h4>${{params.lodgingPrice}} Total</h4>
 		<p>{{params.street}} {{params.city}}, {{params.state}}</p>
