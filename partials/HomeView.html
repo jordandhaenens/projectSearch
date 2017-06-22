@@ -1,16 +1,16 @@
 <div class="container">
-
+departDate
 	<div class="flexy">
 
 		<div class="searchParams">
-			<label for="inputCreated">Choose a Departure Date</label>
-			<input input-date
+			<label for="departureDate">Choose a Departure Date</label>
+			<input watch input-date
 			    type="text"
-			    name="depart"
-			    id="inputCreated"
-			    ng-model="depart"
+			    name="departureDate"
+			    id="departureDate"
+			    ng-model="params.depDate"
 			    container=""
-			    format="dd/mm/yyyy"
+			    format="yyyy-mm-dd"
 			    months-full="{{ month }}"
 			    months-short="{{ monthShort }}"
 			    weekdays-full="{{ weekdaysFull }}"
@@ -31,14 +31,14 @@
 			    on-set="onSet()"
 			    on-stop="onStop()" />
 
-			    <label for="returnDate">Choose a Return Date</label>
-				<input input-date
+			    <label for="retDate">Choose a Return Date</label>
+				<input watch input-date
 				    type="text"
-				    name="return"
-				    id="returnDate"
-				    ng-model="return"
+				    name="retDate"
+				    id="retDate"
+				    ng-model="params.retDate"
 				    container=""
-				    format="dd/mm/yyyy"
+				    format="yyyy-mm-dd"
 				    months-full="{{ month }}"
 				    months-short="{{ monthShort }}"
 				    weekdays-full="{{ weekdaysFull }}"
@@ -60,29 +60,39 @@
 				    on-stop="onStop()" />
 			<!-- <input ng-model="params.depDate" type="text" placeholder="Leave YYYY-MM-DD"><br>
 			<input ng-model="params.retDate" type="text" placeholder="Return YYYY-MM-DD"><br> -->
-			<input ng-model="params.origin" type="text" placeholder="Origin"><br>
-			<label>Flights Price Cap</label><br>
-			<select ng-model="params.airPrice">
+			<label for="origin">Origin</label>
+			<input name="origin" ng-model="params.origin" type="text"><br>
+
+			<label for="airPrice">Flights Price Cap</label><br>
+			<select material-select watch name="airPrice" ng-model="params.airPrice">
 				<option value="200">$200</option>
 				<option value="300">$300</option>
 				<option value="500">$500</option>
 				<option value="1000">$1000</option>
 				<option value="">No cap</option>
 			</select><br>
-			<input ng-model="params.adults" list="adults" placeholder="Adults">
+
+			<!-- <input ng-model="params.adults" list="adults" placeholder="Adults">
 				<datalist id="adults">
 					<option value="1">
 					<option value="2">
-				</datalist><br>
-			<label>Need Lodging?</label><br>
-			<select ng-model="params.lodgingOpt" value="">
+				</datalist><br> -->
+			<label for="adults">Adults</label><br>
+			<select material-select watch name="adults" ng-model="params.adults">
+				<option value="1">1</option>
+				<option value="2">2</option>
+			</select>
+
+			<label for="lodging">Need Lodging?</label><br>
+			<select material-select watch name="lodging" ng-model="params.lodgingOpt" value="">
 				<option value="hotel">Hotel</option>
 				<!-- <option value="hostel">Hostel</option>
 				<option value="AirBnB">AirBnB</option> -->
 				<option value="">Nope!</option>
 			</select><br>
-			<label>Lodging Price Cap</label><br>
-			<select ng-model="params.lodgingPriceCap" placeholder="Lodging Price Cap">
+
+			<label for="lodgingPriceCap">Lodging Price Cap</label><br>
+			<select material-select watch name="lodgingPriceCap" ng-model="params.lodgingPriceCap">
 				<option value="200">$200</option>
 				<option value="300">$300</option>
 				<option value="500">$500</option>
@@ -91,7 +101,6 @@
 			</select><br>
 
 			<button ng-click="getDestinations()">Begin the Magic</button>
-
 		</div>
 
 		<div id="homeResultContainer">

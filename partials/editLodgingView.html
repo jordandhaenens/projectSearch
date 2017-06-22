@@ -1,10 +1,8 @@
 <div class="container">
 	<div class="searchParams">
-		<label>Lodging Options</label><br>
+		<!-- <label>Lodging Options</label><br>
 		<select ng-model="params.lodgingOpt" value="null">
 			<option value="hotel">Hotel</option>
-			<!-- <option value="hostel">Hostel</option>
-			<option value="AirBnB">AirBnB</option> -->
 			<option value="null">Nope!</option>
 		</select><br>
 		<label>Lodging Price Cap</label><br>
@@ -14,7 +12,16 @@
 			<option value="500">$500</option>
 			<option value="1000">$1000</option>
 			<option value="">No cap</option>
-		</select><br>
+		</select><br> -->
+		<label for="lodgingPriceCap">Lodging Price Cap</label><br>
+			<select material-select watch name="lodgingPriceCap" ng-model="params.lodgingPriceCap">
+				<option value="200">$200</option>
+				<option value="300">$300</option>
+				<option value="500">$500</option>
+				<option value="1000">$1000</option>
+				<option value="">No cap</option>
+			</select><br>
+
 		<input ng-click="getLodging()" type="button" class="nextBtn" value="Search">
 	</div>
 
