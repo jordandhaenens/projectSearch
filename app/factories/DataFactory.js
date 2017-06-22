@@ -49,8 +49,7 @@ app.factory('DataFactory', [function(){
 	let searchParams = {
 
 		lodging: false,
-		hotelDays: "10",
-		totalDays: "10"
+		hotelDays: "10"
 	};
 
 	// let clearParams = function(){ //this function is not resetting searchParams. Why?!?

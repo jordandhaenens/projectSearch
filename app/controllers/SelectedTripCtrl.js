@@ -41,8 +41,7 @@ app.controller('SelectedTripCtrl', ['API', '$scope', 'DataFactory', '$window', '
 	$scope.scrap = function(){
 		DataFactory.searchParams = {
 			lodging: false,
-			hotelDays: "10", //update this reset once i am using momentjs to calculate. This will be set in HomeViewCtrl
-			totalDays: "10" //update this reset once i am using momentjs to calculate. This will be set in HomeViewCtrl
+			//hotelDays: "10", //update this reset once i am using momentjs to calculate. This will be set in HomeViewCtrl
 		};
 		console.log("params at scrap fire", $scope.params);
 		console.log("DataFactory params at scrap fire", DataFactory.searchParams);

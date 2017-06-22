@@ -23,7 +23,9 @@ app.controller('HomeViewCtrl', ['API', '$scope', 'DataFactory', '$window', funct
 	};
 
 	$scope.getDestinations = function(){
-		if ($scope.params.lodgingOpt === ""){
+		duration($scope.params.retDate, $scope.params.depDate);
+		console.log("lodgingOpt", $scope.params.lodgingOpt);
+		if ($scope.params.lodgingOpt !== ""){ //should this be equals instead?
 			$scope.params.lodging = true;
 		}
 		API.getDestinations($scope.params)
@@ -40,35 +42,35 @@ app.controller('HomeViewCtrl', ['API', '$scope', 'DataFactory', '$window', funct
 	//Subtract retDate date obj from depDate date obj to get duration and add to $scope.params
 	// $scope.params.duration = duration($scope.params.retDate, $scope.params.depDate);
 
-	// let duration = (retDate, depDate) => {
-	// 	2017-06-12
-	// 	let depart = depDate.toString(),
-	// 		ret = retDate.toString();
+	let duration = function(retDate, depDate){
+		let dep = moment(new Date(depDate), 'yyyy/mm/dd');
+		let ret = moment(new Date(retDate), 'yyyy/mm/dd');
+		console.log('retDate', retDate);
+	    console.log('depDate', depDate);
+		let days = dep.from(ret);
+		console.log("dep", dep);
+		console.log("ret", ret);
+		console.log("days", days);
+		//add days to params
+		$scope.params.totalDays = days;
+		$scope.params.hotelDays = days; //this is until I tie hotelDays to flight times
+	};
 
-	// 	let dYear = depart.slice(0, 4),
-	// 		dMonth = (depart.slice(5, 7) - 1),
-	// 		dDate = depart.slice(8),
-	// 		rYear = ret.slice(0, 4),
-	// 		rMonth = (ret.slice(5, 7) - 1),
-	// 		rDate = ret.slice(8);
-	// 	console.log("dMonth", dMonth);
-
-	// 	let d = new Date(dYear, dMonth, dDate)
-	// };
-
-	var currentTime = new Date();
-	$scope.currentTime = currentTime;
+	//This is for the date-picker
+	$scope.currentTime = new Date();
+	$scope.departDate = $scope.params.depDate;
+	$scope.returnDate = $scope.params.retDate;
 	$scope.month = ['Januar', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 	$scope.monthShort = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 	$scope.weekdaysFull = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 	$scope.weekdaysLetter = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
-	$scope.disable = [false, 1, 7];
+	$scope.disable = [false];
 	$scope.today = 'Today';
 	$scope.clear = 'Clear';
 	$scope.close = 'Close';
-	var days = 15;
-	// $scope.minDate = (new Date($scope.currentTime.getTime() - ( 1000 * 60 * 60 *24 * days ))).toISOString();
-	// $scope.maxDate = (new Date($scope.currentTime.getTime() + ( 1000 * 60 * 60 *24 * days ))).toISOString();
+	var days = 300;
+	$scope.minDate = (new Date($scope.currentTime.getTime())).toISOString();
+	$scope.maxDate = (new Date($scope.currentTime.getTime() + ( 1000 * 60 * 60 *24 * days ))).toISOString();
 	$scope.onStart = function () {
 	    console.log('onStart');
 	};
@@ -80,6 +82,8 @@ app.controller('HomeViewCtrl', ['API', '$scope', 'DataFactory', '$window', funct
 	};
 	$scope.onClose = function () {
 	    console.log('onClose');
+	    console.log('$scope.departDate', $scope.departDate);
+	    console.log('$scope.returnDate', $scope.returnDate);
 	};
 	$scope.onSet = function () {
 	    console.log('onSet');
