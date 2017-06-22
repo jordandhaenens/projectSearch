@@ -85,11 +85,11 @@ app.factory('API', ["$q", "$http", "LowFare", "Inspiration", "Location", "Hotel"
 		console.log("searchParams passed to APIFactory", searchParams);
 		//params.outboundArrTime (check-in date) should be filtered through momentjs to give a date sans time
 		//params.inboundDepTime (check-out date) should be filtered through momentjs to give a date sans time
-		let outboundArrTime = moment(params.outboundArrTime, 'yyyy/mm/dd');
-		let inboundDepTime = moment(params.inboundDepTime, 'yyyy/mm/dd');
+		let outboundArrTime = moment(params.outboundArrTime, 'yyyy-mm-dd');
+		let inboundDepTime = moment(params.inboundDepTime, 'yyyy-mm-dd');
 		console.log('outboundArrTime', outboundArrTime, 'inboundDepTime', inboundDepTime);
-		let hotelDays = inboundDepTime.from(outboundArrTime);
-		console.log('hotelDays', hotelDays);
+		params.hotelDays = inboundDepTime.from(outboundArrTime);
+		console.log('params.hotelDays', params.hotelDays);
 
 
 		let dailyRate = (params.lodgingPriceCap / params.hotelDays);
@@ -108,8 +108,8 @@ app.factory('API', ["$q", "$http", "LowFare", "Inspiration", "Location", "Hotel"
 						beds: currObj.rooms[0].room_type_info.number_of_beds + " " + currObj.rooms[0].room_type_info.bed_type,
 						roomType: currObj.rooms[0].room_type_info.room_type,
 						lodgingPrice: currObj.total_price.amount,
-						checkIn: "",//use the filtered params.outboundArrTime for check-in date
-						checkOut: ""//use the filtered params.inboundDepTime for check-out date
+						checkIn: outboundArrTime,//use the filtered params.outboundArrTime for check-in date
+						checkOut: inboundDepTime//use the filtered params.inboundDepTime for check-out date
 					};
 					arr.push(obj);
 				});
@@ -143,9 +143,12 @@ app.factory('API', ["$q", "$http", "LowFare", "Inspiration", "Location", "Hotel"
 
 	//
 	const editTrip = (obj, tripID) => {
-		delete obj.$$hashKey;
+		console.log("editTrip called");
+		let newObj = obj;
+		delete newObj.$$hashKey;
+		console.log("newObj in editTrip", newObj);
 		// edit savedTrip by tripID
-		let updatedObj = JSON.stringify(obj);
+		let updatedObj = JSON.stringify(newObj);
 		return $q( (resolve, reject) => {
 			$http.patch(`${FBCreds.databaseURL}/trips/${tripID}.json`, updatedObj)
 			.then( (something) => {

@@ -1,16 +1,16 @@
 <div class="container">
-
+departDate
 	<div class="flexy">
 
 		<div class="searchParams">
-			<label for="departDate">Choose a Departure Date</label>
+			<label for="departureDate">Choose a Departure Date</label>
 			<input watch input-date
 			    type="text"
-			    name="departDate"
-			    id="departDate"
-			    ng-model="departDate"
+			    name="departureDate"
+			    id="departureDate"
+			    ng-model="params.depDate"
 			    container=""
-			    format="yyyy/mm/dd"
+			    format="yyyy-mm-dd"
 			    months-full="{{ month }}"
 			    months-short="{{ monthShort }}"
 			    weekdays-full="{{ weekdaysFull }}"
@@ -31,14 +31,14 @@
 			    on-set="onSet()"
 			    on-stop="onStop()" />
 
-			    <label for="returnDate">Choose a Return Date</label>
+			    <label for="retDate">Choose a Return Date</label>
 				<input watch input-date
 				    type="text"
-				    name="returnDate"
-				    id="returnDate"
-				    ng-model="returnDate"
+				    name="retDate"
+				    id="retDate"
+				    ng-model="params.retDate"
 				    container=""
-				    format="yyyy/mm/dd"
+				    format="yyyy-mm-dd"
 				    months-full="{{ month }}"
 				    months-short="{{ monthShort }}"
 				    weekdays-full="{{ weekdaysFull }}"
@@ -77,6 +77,11 @@
 					<option value="1">
 					<option value="2">
 				</datalist><br> -->
+			<label for="adults">Adults</label><br>
+			<select material-select watch name="adults" ng-model="params.adults">
+				<option value="1">1</option>
+				<option value="2">2</option>
+			</select>
 
 			<label for="lodging">Need Lodging?</label><br>
 			<select material-select watch name="lodging" ng-model="params.lodgingOpt" value="">

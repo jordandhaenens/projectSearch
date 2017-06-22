@@ -43,23 +43,22 @@ app.controller('HomeViewCtrl', ['API', '$scope', 'DataFactory', '$window', funct
 	// $scope.params.duration = duration($scope.params.retDate, $scope.params.depDate);
 
 	let duration = function(retDate, depDate){
-		let dep = moment(new Date(depDate), 'yyyy/mm/dd');
-		let ret = moment(new Date(retDate), 'yyyy/mm/dd');
-		console.log('retDate', retDate);
-	    console.log('depDate', depDate);
-		let days = dep.from(ret);
-		console.log("dep", dep);
-		console.log("ret", ret);
+		let dep = moment(new Date(depDate), 'yyyy-mm-dd');
+		let ret = moment(new Date(retDate), 'yyyy-mm-dd');
+		console.log('retDate', retDate, 'depDate', depDate);
+		// let days = dep.from(ret);
+		let days = ret.diff(dep, 'days');
+		console.log("dep", dep, "ret", ret);
 		console.log("days", days);
 		//add days to params
 		$scope.params.totalDays = days;
-		$scope.params.hotelDays = days; //this is until I tie hotelDays to flight times
+		//$scope.params.hotelDays = days; //this is until I tie hotelDays to flight times
 	};
 
 	//This is for the date-picker
 	$scope.currentTime = new Date();
-	$scope.departDate = $scope.params.depDate;
-	$scope.returnDate = $scope.params.retDate;
+	// $scope.departDate = $scope.params.depDate;
+	// $scope.returnDate = $scope.params.retDate;
 	$scope.month = ['Januar', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 	$scope.monthShort = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 	$scope.weekdaysFull = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -82,8 +81,8 @@ app.controller('HomeViewCtrl', ['API', '$scope', 'DataFactory', '$window', funct
 	};
 	$scope.onClose = function () {
 	    console.log('onClose');
-	    console.log('$scope.departDate', $scope.departDate);
-	    console.log('$scope.returnDate', $scope.returnDate);
+	    console.log('$scope.params.depDate', $scope.params.depDate);
+	    console.log('$scope.params.retDate', $scope.params.retDate);
 	};
 	$scope.onSet = function () {
 	    console.log('onSet');
