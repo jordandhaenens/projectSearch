@@ -88,7 +88,7 @@ app.factory('API', ["$q", "$http", "LowFare", "Inspiration", "Location", "Hotel"
 		let outboundArrTime = moment(params.outboundArrTime, 'yyyy-mm-dd');
 		let inboundDepTime = moment(params.inboundDepTime, 'yyyy-mm-dd');
 		console.log('outboundArrTime', outboundArrTime, 'inboundDepTime', inboundDepTime);
-		params.hotelDays = inboundDepTime.from(outboundArrTime);
+		params.hotelDays = inboundDepTime.from(outboundArrTime, 'days');
 		console.log('params.hotelDays', params.hotelDays);
 
 
@@ -162,6 +162,26 @@ app.factory('API', ["$q", "$http", "LowFare", "Inspiration", "Location", "Hotel"
 
 
 	//
+	const removeLodging = (obj, tripID) => {
+		console.log("removeLodging called");
+		let newObj = obj;
+		delete newObj.$$hashKey;
+		console.log("newObj in removeLodging", newObj);
+		// edit savedTrip by tripID
+		let updatedObj = JSON.stringify(newObj);
+		return $q( (resolve, reject) => {
+			$http.put(`${FBCreds.databaseURL}/trips/${tripID}.json`, updatedObj)
+			.then( (something) => {
+				resolve(something);
+			})
+			.catch( (error) => {
+				reject(error);
+			});
+		});
+	};
+
+
+	//
 	const removeTrip = (tripID) => {
 		// remove from FB by ID
 		return $q( (resolve, reject) => {
@@ -210,7 +230,8 @@ app.factory('API', ["$q", "$http", "LowFare", "Inspiration", "Location", "Hotel"
 		addTrip,
 		editTrip,
 		removeTrip,
-		getTrips
+		getTrips,
+		removeLodging
 	};
 
 

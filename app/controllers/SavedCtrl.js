@@ -6,10 +6,11 @@ app.controller('SavedCtrl', ['$location', 'DataFactory', 'API', '$scope', 'AuthF
 
 	$scope.searchParams = DataFactory.searchParams;
 	$scope.data = []; //this holds FB trip objects filtered by depDate
+	// $scope.showHotel = ;
 	let user = AuthFactory.getUser();
 
 	//editTrip() is not working in this scenario though it works when i change lodging
-	$scope.removeLodging = function(params) {
+	$scope.remLodging = function(params) {
 		//remove lodging from SearchParams and updated obj in FB
 		let obj = params;
 		delete obj.beds;
@@ -27,7 +28,7 @@ app.controller('SavedCtrl', ['$location', 'DataFactory', 'API', '$scope', 'AuthF
 		delete obj.street;
 		$scope.searchParams = obj;
 		console.log("obj passed to removeLodging()", $scope.searchParams);
-		API.editTrip($scope.searchParams, $scope.searchParams.tripID)
+		API.removeLodging($scope.searchParams, $scope.searchParams.tripID)
 		.then( function(response) {
 			getTrips();
 		});

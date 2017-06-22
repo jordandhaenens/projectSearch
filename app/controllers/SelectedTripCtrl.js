@@ -12,6 +12,7 @@ app.controller('SelectedTripCtrl', ['API', '$scope', 'DataFactory', '$window', '
 
 
 	$scope.editToFB = function(){
+		$scope.params.lodging = true;
 		API.editTrip($scope.params, $scope.params.tripID)
 		.then( function(data) {
 			console.log("return from editToFB", data);

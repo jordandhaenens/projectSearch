@@ -12,7 +12,7 @@
 			<p>{{params.inboundOrigin}} to {{params.inboundDestination}} Departs at: {{params.inboundDepTime}} Arrives at: {{params.inboundArrTime}}</p>
 			<p>Operated by {{params.inboundAirline}} and Sold by {{params.inboundMktAirline}}</p>
 			<p>Flight Number {{params.inboundFlightNum}} Travel class {{params.inboundTravelClass}}</p>
-			<div ng-hide>
+			<div ng-show="params.lodging">
 				<h4>{{params.propertyName}}</h4>
 				<h4>${{params.lodgingPrice}} Total</h4>
 				<p>{{params.street}} {{params.city}}, {{params.state}}</p>
@@ -21,7 +21,7 @@
 			</div>
 			<input ng-click="deleteTrip(params)" type="button" value="Delete Trip">
 			<input ng-click="editTrip(params)" type="button" value="Edit Lodging">
-			<input ng-click="removeLodging(params)" type="button" value="Remove Lodging">
+			<input ng-click="remLodging(params)" type="button" value="Remove Lodging">
 			<input type="button" value="Purchase">
 		</div>
 	</div>
