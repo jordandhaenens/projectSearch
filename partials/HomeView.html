@@ -1,8 +1,8 @@
-<!-- <div class="container">
-	<div class="flexy">
+<div class="mainFlexArea">
 
-		<div class="searchParams">
-			<label for="departureDate">Choose a Departure Date</label>
+
+		<div ng-show="switch" id="searchParams">
+			<!-- <label for="departureDate">Choose a Departure Date</label>
 			<input watch input-date
 			    type="text"
 			    name="departureDate"
@@ -56,61 +56,105 @@
 				    on-open="onOpen()"
 				    on-close="onClose()"
 				    on-set="onSet()"
-				    on-stop="onStop()" />
+				    on-stop="onStop()" /> -->
+			<div class="form-group row">
+				<label for="depDate" class="col-5 column-form-label">Departure Date</label>
+				<div class="col-7">
+					<input class="form-control" ng-model="params.depDate" type="date" id="depDate">
+				</div>
+			</div>
 
-			<label for="origin">Origin</label>
-			<input name="origin" ng-model="params.origin" type="text"><br>
+			<div class="form-group row">
+				<label for="retDate" class="col-5 column-form-label">Return Date</label>
+				<div class="col-7">
+					<input class="form-control" ng-model="params.retDate" type="date" id="retDate">
+				</div>
+			</div>
 
-			<label for="airPrice">Flights Price Cap</label><br>
-			<select material-select watch name="airPrice" ng-model="params.airPrice">
-				<option value="200">$200</option>
-				<option value="300">$300</option>
-				<option value="500">$500</option>
-				<option value="1000">$1000</option>
-				<option value="">No cap</option>
-			</select><br>
+			<div class="form-group row">
+				<!-- <label for="origin" class="col-2 column-form-label">Origin</label> -->
+				<div class="col-12">
+					<input class="form-control" id="origin" ng-model="params.origin" type="text" placeholder="Origin">
+				</div>
+			</div>
 
-			<label for="adults">Adults</label><br>
-			<select material-select watch name="adults" ng-model="params.adults">
-				<option value="1">1</option>
-				<option value="2">2</option>
-			</select>
+			<div class="form-group row">
+				<!-- <label for="airPrice" class="col-2 column-form-label">Flights Price Cap</label> -->
+				<div class="col-12">
+					<select class="form-control" name="airPrice" ng-model="params.airPrice">
+						<option value="200">$200</option>
+						<option value="300">$300</option>
+						<option value="500">$500</option>
+						<option value="1000">$1000</option>
+						<option value="">No cap</option>
+						<option value="">Flight Price Cap</option>
+					</select>
+				</div>
+			</div>
 
-			<label for="lodging">Need Lodging?</label><br>
-			<select material-select watch name="lodging" ng-model="params.lodgingOpt" value="">
-				<option value="hotel">Hotel</option>
-				<option value="">Nope!</option>
-			</select><br>
+			<div class="form-group row">
+				<!-- <label for="adults" class="col-2 column-form-label">Adults</label> -->
+				<div class="col-12">
+					<select class="form-control" name="adults" ng-model="params.adults">
+						<option value="">How Many Adventurers?</option>
+						<option value="1">1 Adventurer</option>
+						<option value="2">2 Adventurers</option>
+					</select>
+				</div>
+			</div>
 
-			<label for="lodgingPriceCap">Lodging Price Cap</label><br>
-			<select material-select watch name="lodgingPriceCap" ng-model="params.lodgingPriceCap">
-				<option value="200">$200</option>
-				<option value="300">$300</option>
-				<option value="500">$500</option>
-				<option value="1000">$1000</option>
-				<option value="">No cap</option>
-			</select><br>
+			<div class="form-group row">
+				<!-- <label for="lodging" class="col-2 column-form-label">Need Lodging?</label> -->
+				<div class="col-12">
+					<select class="form-control" name="lodging" ng-model="params.lodgingOpt" value="">
+						<option value="hotel">Hotel</option>
+						<option value="">Nope!</option>
+						<option value="">Need Lodging?</option>
+					</select>
+				</div>
+			</div>
 
-			<button ng-click="getDestinations()">Begin the Magic</button>
+			<div ng-show="params.lodgingOpt" class="form-group row">
+				<!-- <label for="lodgingPriceCap" class="col-2 column-form-label">Lodging Price Cap</label> -->
+				<div class="col-12">
+					<select class="form-control" name="lodgingPriceCap" ng-model="params.lodgingPriceCap">
+						<option value="200">$200</option>
+						<option value="300">$300</option>
+						<option value="500">$500</option>
+						<option value="1000">$1000</option>
+						<option value="">No cap</option>
+						<option value="">Lodging Price Cap</option>
+					</select>
+				</div>
+			</div>
+
 		</div>
 
-		<div id="homeResultContainer">
-			<div class="homeResultBox">
+		<div ng-hide="switch" id="homeResultContainer">
+			<!-- <div class="homeResultBox"> -->
 				<div ng-repeat="item in data.flights" class="destResults">
 					<div ng-class="{selected: data.selected==item}" ng-click="updateParams(item.destination); data.selected=item">
-					<h3>You can fly to {{item.destination}} for {{data.fullData.currency}}{{item.price}}</h3>
+					<h3>You can fly to {{item.destination}} for <!-- {{data.fullData.currency}}{{item.price}}</h3> -->
+					${{item.price}}!</h3>
 					<p>Departing: {{item.departure_date}} | Returning {{item.return_date}}</p>
 					</div>
 				</div>
-			</div>
-			<a href="#!/flightsView">
-				<input type="button" class="nextBtn" value="Next">
-			</a>
+			<!-- </div> -->
 		</div>
 
-	</div>
+		<div id="buttonDiv">
+			<div ng-show="switch" class="buttons" ng-click="getDestinations()">
+				<p>Start</p>
+			</div>
 
-</div> -->
+			<div ng-hide="switch" class="buttons">
+				<a href="#!/flightsView">Next</a>
+			</div>
+
+		</div>
+
+
+</div>
 
 
 

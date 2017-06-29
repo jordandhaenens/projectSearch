@@ -48,7 +48,13 @@
 // 	background-color: lightblue;
 // }
 
+// @import 'default.scss';
+// // @import 'default.date.scss';
+// @import 'default.time.scss';
 
+/******************
+New Styling
+******************/
 html {
 	width: 100%;
 	height: 100%;
@@ -59,37 +65,119 @@ body {
 	width: 100%;
 	height: 100%;
 	margin: 0;
-}
-
-#container {
-	width: 100%;
-	height: 100%;
-	display: grid;
-	grid-template-columns: 4rem 1fr 1fr 1fr ;
-	grid-template-rows: 4rem 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-	background: url(./pics/sunrisePalmFrond.jpg) no-repeat;
+	background: url(../pics/sunrisePalmFrond.jpg) no-repeat;
 	background-size: cover;
-
 }
+
+// #container {
+// 	width: 100%;
+// 	height: 100%;
+// 	display: grid;
+// 	grid-template-columns: 4rem 1fr 1fr 1fr ;
+// 	grid-template-rows: 4rem 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+// 	background: url(./pics/sunrisePalmFrond.jpg) no-repeat;
+// 	background-size: cover;
+// }
 
 #navBar {
-	grid-row: 1 / 2;
-	grid-column: span 4;
+	// grid-row: 1 / 2;
+	// grid-column: span 4;
+	width: 100vw;
+	height: 4rem;
 	background-color: rgba(108, 110, 124, 0.8);
 }
 
-#leftShade {
-	grid-row: span 10;
-	grid-column: 1 / 2;
-	background-color: rgba(108, 110, 124, 0.8);
+#flexContainer {
+	height: 100vh;
+	margin-top: -4rem;
+	padding-top: 4rem;
+	display: flex;
 }
 
-#selectContainer {
-	grid-column: 3 / 4;
-	grid-row: 3 / span 7;
-	/*overflow: scroll;*/ /*this causes issues with grid in Chrome*/
+
+.mainFlexArea {
+	// flex-grow: auto;
+	height: 92vh;
+	display: flex;
+	justify-content: center;
+
 }
 
+
+input, select {
+	// width: 50% !important;
+	// display: inline-block;
+	background-color: rgba(255, 255, 255, 0.8) !important;
+	color: rgb(84, 85, 86) !important;
+}
+
+label {
+	color: white;
+}
+/********************
+HomeView
+********************/
+#searchParams {
+	width: 35%;
+	margin: auto 0 auto 25%;
+	padding: 0 0 0 5%;
+}
+
+
+#homeResultContainer {
+	// border: solid 1px white;
+	display: flex;
+	align-content: center;
+	width: 60%;
+	height: 80vh;
+	margin: auto 0;
+	overflow: scroll;
+}
+
+.destResults {
+	width: 100%;
+	height: auto;
+	margin: 1rem 0;
+	padding: 0.5rem 1rem;
+	border-radius: 5%;
+	background-color: rgba(255, 255, 255, 0.8);
+	color: rgb(84, 85, 86);
+}
+
+
+#buttonDiv {
+	display: flex;
+	justify-content: center;
+	width: 20%;
+	margin: auto 5% auto 5%;
+}
+/********************
+HomeView End
+********************/
+
+// #selectContainer {
+// 	grid-column: 3 / 4;
+// 	grid-row: 3 / span 7;
+// 	overflow: scroll; /*this causes issues with grid in Chrome*/
+// }
+
+.buttons {
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	width: 110px;
+	height: 110px;
+	// margin: 1rem 30%;
+	border-radius: 50%;
+	color: green;
+	// background-color: #4CAF50;
+	background-color: rgba(255, 255, 255, 0.8);
+}
+
+
+.selected {
+	background-color: rgba(239, 116, 110, 0.8);
+}
 
 /*Dropdown Styling*/
 .dropdown {
@@ -138,16 +226,6 @@ body {
 }
 
 /*End Dropdown Styling*/
-
-.searchBtn {
-	grid-row: 5 / span 3;
-	grid-column: 4 / 5;
-	width: 100px;
-	height: 100px;
-	margin: 1rem 30%;
-	border-radius: 50%;
-	background-color: #4CAF50;
-}
 
 
 

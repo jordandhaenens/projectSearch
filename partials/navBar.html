@@ -1,10 +1,8 @@
 <div ng-controller="NavbarCtrl">
 	<div>
-		<ul>
 			<li ng-click="goHome()">Home</li>
 			<li ng-hide="loggedIn" ng-click="logIn()">Login with Google</li>
 			<li ng-show="loggedIn" ng-click="logOut()">LogOut</li>
-		</ul>
 		<input ng-show="loggedIn" ng-click="savedTrips()" type="button" value="Saved Trips">
 		<input ng-show="loggedIn" type="button" value="Past Trips">
 	</div>
