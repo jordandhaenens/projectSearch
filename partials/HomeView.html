@@ -1,5 +1,4 @@
-<div class="container">
-departDate
+<!-- <div class="container">
 	<div class="flexy">
 
 		<div class="searchParams">
@@ -58,8 +57,7 @@ departDate
 				    on-close="onClose()"
 				    on-set="onSet()"
 				    on-stop="onStop()" />
-			<!-- <input ng-model="params.depDate" type="text" placeholder="Leave YYYY-MM-DD"><br>
-			<input ng-model="params.retDate" type="text" placeholder="Return YYYY-MM-DD"><br> -->
+
 			<label for="origin">Origin</label>
 			<input name="origin" ng-model="params.origin" type="text"><br>
 
@@ -72,11 +70,6 @@ departDate
 				<option value="">No cap</option>
 			</select><br>
 
-			<!-- <input ng-model="params.adults" list="adults" placeholder="Adults">
-				<datalist id="adults">
-					<option value="1">
-					<option value="2">
-				</datalist><br> -->
 			<label for="adults">Adults</label><br>
 			<select material-select watch name="adults" ng-model="params.adults">
 				<option value="1">1</option>
@@ -86,8 +79,6 @@ departDate
 			<label for="lodging">Need Lodging?</label><br>
 			<select material-select watch name="lodging" ng-model="params.lodgingOpt" value="">
 				<option value="hotel">Hotel</option>
-				<!-- <option value="hostel">Hostel</option>
-				<option value="AirBnB">AirBnB</option> -->
 				<option value="">Nope!</option>
 			</select><br>
 
@@ -107,7 +98,6 @@ departDate
 			<div class="homeResultBox">
 				<div ng-repeat="item in data.flights" class="destResults">
 					<div ng-class="{selected: data.selected==item}" ng-click="updateParams(item.destination); data.selected=item">
-					<!-- <div ng-class="{selected: data.selected==item}" ng-click="addClass($event)"> -->
 					<h3>You can fly to {{item.destination}} for {{data.fullData.currency}}{{item.price}}</h3>
 					<p>Departing: {{item.departure_date}} | Returning {{item.return_date}}</p>
 					</div>
@@ -120,7 +110,23 @@ departDate
 
 	</div>
 
-</div>
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
