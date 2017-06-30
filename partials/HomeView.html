@@ -132,12 +132,12 @@
 
 		<div ng-hide="switch" id="homeResultContainer">
 			<!-- <div class="homeResultBox"> -->
-				<div ng-repeat="item in data.flights" class="destResults">
-					<div ng-class="{selected: data.selected==item}" ng-click="updateParams(item.destination); data.selected=item">
+				<div ng-repeat="item in data.flights" ng-class="{destResults: true, selected: data.selected==item}" ng-click="updateParams(item.destination); data.selected=item">
+					<!-- <div ng-class="{destResults: true, selected: data.selected==item}" ng-click="updateParams(item.destination); data.selected=item"> -->
 					<h3>You can fly to {{item.destination}} for <!-- {{data.fullData.currency}}{{item.price}}</h3> -->
 					${{item.price}}!</h3>
-					<p>Departing: {{item.departure_date}} | Returning {{item.return_date}}</p>
-					</div>
+					<p>Departing: {{item.departure_date}}<br>Returning: {{item.return_date}}</p>
+					<!-- </div> -->
 				</div>
 			<!-- </div> -->
 		</div>
