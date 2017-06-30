@@ -48,22 +48,20 @@
  <div class="mainFlexArea">
 
 	<div class="resultContainer">
-		<div ng-hide="hideFlights" id="flightsResults">
+		<div class="auto" ng-hide="hideFlights" id="flightsResults">
 			<div ng-repeat="obj in data.flights" ng-class="{destResults: true, selected: data.selected==obj}" ng-click="updateParams(obj); data.selected=obj">
 				<!-- <div ng-class="{selected: data.selected==obj}" ng-click="updateParams(obj); data.selected=obj"> -->
 					<h4 class="indented">RoundTrip Price: ${{obj.airPrice}}</h4>
 					<h4 class="indented">Outbound Flight</h4>
-					<p>From {{obj.outboundOrigin}} to {{obj.outboundDestination}}</p>
+					<p>From {{obj.outboundOrigin}} to {{obj.outboundDestination}} Operated by {{obj.outboundAirline}}</p>
 					<p>Departs: {{obj.outboundDepTime}} Arrives: {{obj.outboundArrTime}}</p>
-					<p>Operated by {{obj.outboundAirline}}</p>
 					<!-- <p>Sold by {{obj.outboundMktAirline}}</p> -->
 					<p>Flight #: {{obj.outboundFlightNum}} Travel Class: {{obj.outboundTravelClass}}</p>
 					<!-- <p>Travel Class: {{obj.outboundTravelClass}}</p> -->
 
 					<h4 class="indented">Inbound Flight</h4>
-					<p>From {{obj.inboundOrigin}} to {{obj.inboundDestination}}</p>
+					<p>From {{obj.inboundOrigin}} to {{obj.inboundDestination}} Operated by {{obj.inboundAirline}}</p>
 					<p>Departs: {{obj.inboundDepTime}} Arrives: {{obj.inboundArrTime}}</p>
-					<p>Operated by {{obj.inboundAirline}}</p>
 					<!-- <p>Sold by {{obj.inboundMktAirline}}</p> -->
 					<p>Flight #: {{obj.inboundFlightNum}} Travel class: {{obj.inboundTravelClass}}</p>
 					<!-- <p>Travel class: {{obj.inboundTravelClass}}</p> -->
@@ -72,7 +70,7 @@
 			</div>
 		</div>
 
-		<div ng-hide="hideHotels" class="hotelResults">
+		<div class="auto" ng-hide="hideHotels" class="hotelResults">
 			<div ng-repeat="obj in data.lodging" ng-class="{destResults: true, selected: data.selected==obj}" ng-click="updateParams(obj); data.selected=obj">
 				<!-- <div ng-class="{selected: data.selected==obj}" ng-click="updateParams(obj); data.selected=obj"> -->
 					<h4 class="indented">{{obj.propertyName}} ${{obj.lodgingPrice}} Total</h4>

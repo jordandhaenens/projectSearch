@@ -1,5 +1,4 @@
-
-<div ng-model="params">
+<!-- <div ng-model="params">
 	<div id="selectedFlight">
 		<h4>${{params.airPrice}}</h4>
 		<p>Change Penalties: {{params.changePenalties}} Refundable: {{params.refundable}}</p>
@@ -33,4 +32,49 @@
 		<input ng-show="user" ng-click="params.editLodging ? editToFB() : saveToFB()" type="button" value="Save">
 		<input ng-click="scrap()" type="button" value="Let's Start Over">
 	</div>
+</div> -->
+
+<div class="mainFlexArea">
+
+	<div class="resultContainer" ng-model="params">
+		<div class="destResults" id="selectedFlight">
+			<h4 class="indented">RoundTrip Price: ${{params.airPrice}}</h4>
+			<h4 class="indented">Outbound Flight</h4>
+			<p>From {{params.outboundOrigin}} to {{params.outboundDestination}}</p>
+			<p>Departs: {{params.outboundDepTime}} Arrives: {{params.outboundArrTime}}</p>
+			<p>Operated by {{params.outboundAirline}}</p>
+			<p>Flight #: {{params.outboundFlightNum}} Travel Class: {{params.outboundTravelClass}}</p>
+
+			<h4 class="indented">Inbound Flight</h4>
+			<p>From {{params.inboundOrigin}} to {{params.inboundDestination}}</p>
+			<p>Departs: {{params.inboundDepTime}} Arrives: {{params.inboundArrTime}}</p>
+			<p>Operated by {{params.inboundAirline}}</p>
+			<p>Flight #: {{params.inboundFlightNum}} Travel class: {{params.inboundTravelClass}}</p>
+			<p class="penaltiesTag">Change Penalties: {{params.changePenalties}} Refundable: {{params.refundable}}</p>
+		</div>
+
+		<div class="destResults" ng-show="params.lodgingOpt" id="selectedHotel">
+			<h4 class="indented">{{params.propertyName}} ${{params.lodgingPrice}} Total</h4>
+			<p>{{params.street}} {{params.city}}, {{params.state}}</p>
+			<p>{{params.beds}}. {{params.roomType}}</p>
+			<p>Check-In: {{params.checkIn}} Check-Out: {{params.checkOut}}</p>
+		</div>
+
+	</div>
+
+	<div class="buttonDiv">
+		<div class="buttons"><p>Book</p></div>
+
+		<div class="buttons" ng-show="user" ng-click="params.editLodging ? editToFB() : saveToFB()">
+			<p>Save</p>
+		</div>
+
+		<div class="buttons" ng-click="scrap()">
+			<p>Start Over</p>
+		</div>
+	</div>
+
 </div>
+
+
+

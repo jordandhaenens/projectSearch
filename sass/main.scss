@@ -73,17 +73,9 @@ p {
 	margin: 0 !important;
 }
 
-// #container {
-// 	width: 100%;
-// 	height: 100%;
-// 	display: grid;
-// 	grid-template-columns: 4rem 1fr 1fr 1fr ;
-// 	grid-template-rows: 4rem 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-// 	background: url(./pics/sunrisePalmFrond.jpg) no-repeat;
-// 	background-size: cover;
-// }
-
 #navBar {
+	display: flex;
+	justify-content: space-between;
 	width: 100vw;
 	height: 4rem;
 	background-color: rgba(108, 110, 124, 0.8);
@@ -102,9 +94,7 @@ p {
 	height: 92vh;
 	display: flex;
 	justify-content: center;
-
 }
-
 
 input, select {
 	// width: 50% !important;
@@ -116,7 +106,51 @@ input, select {
 label {
 	color: white;
 }
+
+.auto {
+	margin: auto;
+}
+
 /********************
+NavBar
+********************/
+#navPartial {
+	display: flex;
+	width: auto;
+	height: 4rem;
+}
+
+.navBtn {
+	display: flex;
+    color: white;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+}
+
+.navBtn p {
+	margin: auto;
+}
+
+.navBtn:hover {
+	background-color: rgba(47, 61, 71, 0.6);
+	// border-left: 2px solid rgba(255, 255, 255, 0.8);
+	// border-right: 2px solid rgba(255, 255, 255, 0.8);
+}
+
+#logo {
+	display: flex;
+    color: white;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+}
+
+/********************
+NavBar End
+********************
 HomeView
 ********************/
 #searchParams {
@@ -127,6 +161,8 @@ HomeView
 
 
 .resultContainer {
+	display: flex;
+	flex-direction: column;
 	border-radius: 0.25rem;
 	width: 55%;
 	height: 80vh;
@@ -135,8 +171,8 @@ HomeView
 }
 
 .destResults {
-	display: flex;
-	justify-content: space-around;
+	display: block;
+	// justify-content: space-around;
 	width: 100%;
 	height: auto;
 	margin: 1rem 0;
@@ -152,9 +188,11 @@ HomeView
 
 .buttonDiv {
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	width: 20%;
-	margin: auto 5% auto 5%;
+	height: 80vh;
+	margin: auto 5%;
 }
 /********************
 HomeView End
@@ -170,8 +208,8 @@ FlightsView
 }
 
 /*********************
-FlightsView
-********************/
+FlightsView End
+*********************/
 
 .buttons {
 	display: flex;
@@ -179,7 +217,7 @@ FlightsView
 	align-items: center;
 	width: 110px;
 	height: 110px;
-	// margin: 1rem 30%;
+	margin: auto;
 	border-radius: 50%;
 	color: green;
 	// background-color: #4CAF50;

@@ -1,4 +1,4 @@
-<div ng-controller="NavbarCtrl">
+<!-- <div ng-controller="NavbarCtrl">
 	<div>
 			<li ng-click="goHome()">Home</li>
 			<li ng-hide="loggedIn" ng-click="logIn()">Login with Google</li>
@@ -6,4 +6,28 @@
 		<input ng-show="loggedIn" ng-click="savedTrips()" type="button" value="Saved Trips">
 		<input ng-show="loggedIn" type="button" value="Past Trips">
 	</div>
+</div> -->
+
+<div class="navBtn" id="logo">
+	<p>Weekendr</p>
 </div>
+
+<div id="navPartial" ng-controller="NavbarCtrl">
+	<div class="navBtn" ng-click="goHome()">
+		<p>Home</p>
+	</div>
+
+	<div class="navBtn" ng-show="loggedIn" ng-click="savedTrips()">
+		<p>Saved Trips</p>
+	</div>
+
+	<div class="navBtn" ng-hide="loggedIn" ng-click="logIn()">
+		<p>Google Login</p>
+	</div>
+
+	<div class="navBtn" ng-show="loggedIn" ng-click="logOut()">
+		<p>LogOut</p>
+	</div>
+
+</div>
+

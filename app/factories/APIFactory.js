@@ -92,7 +92,8 @@ app.factory('API', ["$q", "$http", "LowFare", "Inspiration", "Location", "Hotel"
 		console.log('params.hotelDays', params.hotelDays);
 
 
-		let dailyRate = (params.lodgingPriceCap / params.hotelDays);
+		// let dailyRate = (params.lodgingPriceCap / params.hotelDays);
+		let dailyRate = (params.lodgingPriceCap / params.totalDays);
 		return $q( (resolve, reject) => {
 			$http.get(`${Hotel.databaseUrl}apikey=${Hotel.apiKey}&location=${params.destination}&check_in=${params.depDate}&check_out=${params.retDate}&radius=42&lang=en&max_rate=${dailyRate}&number_of_results=20`)
 			.then( (stuff) => {
@@ -114,6 +115,7 @@ app.factory('API', ["$q", "$http", "LowFare", "Inspiration", "Location", "Hotel"
 					arr.push(obj);
 				});
 				resolve(arr);
+				console.log("hotels from api", arr);
 			})
 			.catch( (error) => {
 				reject(error);
