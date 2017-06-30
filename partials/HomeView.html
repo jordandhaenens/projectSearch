@@ -130,7 +130,7 @@
 
 		</div>
 
-		<div ng-hide="switch" id="homeResultContainer">
+		<div ng-hide="switch" class="resultContainer">
 			<!-- <div class="homeResultBox"> -->
 				<div ng-repeat="item in data.flights" ng-class="{destResults: true, selected: data.selected==item}" ng-click="updateParams(item.destination); data.selected=item">
 					<!-- <div ng-class="{destResults: true, selected: data.selected==item}" ng-click="updateParams(item.destination); data.selected=item"> -->
@@ -142,7 +142,7 @@
 			<!-- </div> -->
 		</div>
 
-		<div id="buttonDiv">
+		<div class="buttonDiv">
 			<div ng-show="switch" class="buttons" ng-click="getDestinations()">
 				<p>Start</p>
 			</div>

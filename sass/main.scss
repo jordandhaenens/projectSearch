@@ -126,7 +126,7 @@ HomeView
 }
 
 
-#homeResultContainer {
+.resultContainer {
 	// border: solid 1px white;
 	// padding-top: 9vh;
 	width: 55%;
@@ -151,7 +151,7 @@ HomeView
 	margin: auto 0;
 }
 
-#buttonDiv {
+.buttonDiv {
 	display: flex;
 	justify-content: center;
 	width: 20%;
@@ -159,13 +159,20 @@ HomeView
 }
 /********************
 HomeView End
+*********************
+FlightsView
 ********************/
+.indented {
+	margin: 1rem 2rem;
+}
 
-// #selectContainer {
-// 	grid-column: 3 / 4;
-// 	grid-row: 3 / span 7;
-// 	overflow: scroll; /*this causes issues with grid in Chrome*/
-// }
+.penaltiesTag {
+	margin: 1rem 0 2rem;
+}
+
+/*********************
+FlightsView
+********************/
 
 .buttons {
 	display: flex;
