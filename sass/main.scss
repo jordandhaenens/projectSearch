@@ -81,12 +81,12 @@ p {
 	background-color: rgba(108, 110, 124, 0.8);
 }
 
-#flexContainer {
-	height: 100vh;
-	margin-top: -4rem;
-	padding-top: 4rem;
-	display: flex;
-}
+// #flexContainer {
+// 	height: 100vh;
+// 	margin-top: -4rem;
+// 	padding-top: 4rem;
+// 	display: flex;
+// }
 
 
 .mainFlexArea {
@@ -209,6 +209,60 @@ FlightsView
 
 /*********************
 FlightsView End
+*********************
+SavedTripView
+*********************/
+#savedContainer {
+	display: flex;
+	flex-direction: column;
+	border-radius: 0.25rem;
+	width: 80%;
+	height: 80vh;
+	margin: auto;
+	overflow: scroll;
+}
+
+.savedResults {
+	display: block;
+	// flex-direction: column;
+	width: 100%;
+	height: auto;
+	margin: 1rem 0;
+	padding: 0.5rem 0.5rem;
+	border-radius: 0.25rem;
+	background-color: rgba(255, 255, 255, 0.8);
+	color: rgb(84, 85, 86);
+}
+
+#savedViewBtns {
+	display: flex;
+	width: auto;
+	height: 4rem;
+}
+
+.savedViewBtns {
+	display: flex;
+    color: white;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+}
+
+.savedViewBtns p {
+	margin: auto;
+}
+
+.savedViewBtns:hover {
+	background-color: rgba(47, 61, 71, 0.6);
+	// border-left: 2px solid rgba(255, 255, 255, 0.8);
+	// border-right: 2px solid rgba(255, 255, 255, 0.8);
+}
+
+
+
+/*********************
+SavedTripView End
 *********************/
 
 .buttons {

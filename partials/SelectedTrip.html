@@ -40,15 +40,13 @@
 		<div class="destResults" id="selectedFlight">
 			<h4 class="indented">RoundTrip Price: ${{params.airPrice}}</h4>
 			<h4 class="indented">Outbound Flight</h4>
-			<p>From {{params.outboundOrigin}} to {{params.outboundDestination}}</p>
+			<p>From {{params.outboundOrigin}} to {{params.outboundDestination}} Operated by {{params.outboundAirline}}</p>
 			<p>Departs: {{params.outboundDepTime}} Arrives: {{params.outboundArrTime}}</p>
-			<p>Operated by {{params.outboundAirline}}</p>
 			<p>Flight #: {{params.outboundFlightNum}} Travel Class: {{params.outboundTravelClass}}</p>
 
 			<h4 class="indented">Inbound Flight</h4>
-			<p>From {{params.inboundOrigin}} to {{params.inboundDestination}}</p>
+			<p>From {{params.inboundOrigin}} to {{params.inboundDestination}} Operated by {{params.inboundAirline}}</p>
 			<p>Departs: {{params.inboundDepTime}} Arrives: {{params.inboundArrTime}}</p>
-			<p>Operated by {{params.inboundAirline}}</p>
 			<p>Flight #: {{params.inboundFlightNum}} Travel class: {{params.inboundTravelClass}}</p>
 			<p class="penaltiesTag">Change Penalties: {{params.changePenalties}} Refundable: {{params.refundable}}</p>
 		</div>
