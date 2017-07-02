@@ -5,6 +5,7 @@ app.controller('EditLodgingCtrl', ['$location', 'DataFactory', 'API', '$scope', 
 	console.log('EditLodgingCtrl loaded');
 
 	$scope.params = DataFactory.searchParams;
+	$scope.switch = true;
 	$scope.data = {
 		selected: null,
 		lodging: []
@@ -18,6 +19,7 @@ app.controller('EditLodgingCtrl', ['$location', 'DataFactory', 'API', '$scope', 
 			console.log("getLodging response", response);
 			//filter this by response.lodgingPrice not to exceed $scope.params.lodgingPriceCap
 			$scope.data.lodging = response;
+			$scope.switch = false;
 		});
 	};
 

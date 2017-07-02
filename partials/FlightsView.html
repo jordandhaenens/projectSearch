@@ -70,7 +70,7 @@
 			</div>
 		</div>
 
-		<div class="auto" ng-hide="hideHotels" class="hotelResults">
+		<div class="auto" ng-hide="hideHotels">
 			<div ng-repeat="obj in data.lodging" ng-class="{destResults: true, selected: data.selected==obj}" ng-click="updateParams(obj); data.selected=obj">
 				<!-- <div ng-class="{selected: data.selected==obj}" ng-click="updateParams(obj); data.selected=obj"> -->
 					<h4 class="indented">{{obj.propertyName}} ${{obj.lodgingPrice}} Total</h4>
