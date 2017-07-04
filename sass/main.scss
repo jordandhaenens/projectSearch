@@ -118,6 +118,7 @@ NavBar
 	display: flex;
 	width: auto;
 	height: 4rem;
+	margin: 0;
 }
 
 .navBtn {
@@ -267,7 +268,9 @@ EditLodgingView
 *********************/
 
 #editLodgingParams {
-	margin: auto;
+	width: 35%;
+	margin: auto 0 auto 25%;
+	padding: 0 0 0 5%;
 }
 
 /*********************

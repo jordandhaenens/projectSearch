@@ -70,6 +70,13 @@
 			</div>
 		</div>
 
+		<div class="auto" ng-show="data.flightError">
+			<div class="searchError">
+				<h5>Unfortunately, there are no direct flights to {{params.destination}}.</h5>
+				<p>You are being redirected to the initial search page.</p>
+			</div>
+		</div>
+
 		<div class="auto" ng-hide="hideHotels">
 			<div ng-repeat="obj in data.lodging" ng-class="{destResults: true, selected: data.selected==obj}" ng-click="updateParams(obj); data.selected=obj">
 				<!-- <div ng-class="{selected: data.selected==obj}" ng-click="updateParams(obj); data.selected=obj"> -->
@@ -79,6 +86,12 @@
 					<p>{{obj.beds}}. {{obj.roomType}}</p>
 					<p>Check-In: {{obj.checkIn}} Check-Out: {{obj.checkOut}}</p>
 				<!-- </div> -->
+			</div>
+		</div>
+
+		<div class="auto" ng-show="data.lodgingError">
+			<div class="searchError">
+				<h4>There are no hotels available that match your search parameters</h4>
 			</div>
 		</div>
 

@@ -98,6 +98,7 @@ app.factory('API', ["$q", "$http", "LowFare", "Inspiration", "Location", "Hotel"
 			$http.get(`${Hotel.databaseUrl}apikey=${Hotel.apiKey}&location=${params.destination}&check_in=${params.depDate}&check_out=${params.retDate}&radius=42&lang=en&max_rate=${dailyRate}&number_of_results=20`)
 			.then( (stuff) => {
 				let results = stuff.data.results;
+				console.log("hotel results from factory", stuff);
 				let arr = [];
 				let obj = {};
 				results.forEach(function(currObj){

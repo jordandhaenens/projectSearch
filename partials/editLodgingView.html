@@ -60,6 +60,7 @@
 
 
 		<div ng-hide="switch" class="resultContainer">
+
 			<div class="auto">
 				<div ng-repeat="obj in data.lodging" ng-class="{destResults: true, selected: data.selected==obj}" ng-click="updateParams(obj); data.selected=obj">
 						<h4 class="indented">{{obj.propertyName}} ${{obj.lodgingPrice}} Total</h4>
@@ -67,6 +68,10 @@
 						<p>{{obj.beds}}. {{obj.roomType}}</p>
 						<p>Check-In: {{obj.checkIn}} Check-Out: {{obj.checkOut}}</p>
 				</div>
+			</div>
+
+			<div class="destResults" ng-show="data.lodgingError">
+				<h4>Unfortunately, there are no hotels matching your search parameters. You are being redirected to SavedTrips</h4>
 			</div>
 		</div>
 

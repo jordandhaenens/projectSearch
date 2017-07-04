@@ -1,7 +1,7 @@
 "use strict";
 
 
-app.controller('EditLodgingCtrl', ['$location', 'DataFactory', 'API', '$scope', 'AuthFactory', function($location, DataFactory, API, $scope, AuthFactory){
+app.controller('EditLodgingCtrl', ['$timeout', '$location', 'DataFactory', 'API', '$scope', 'AuthFactory', function($timeout, $location, DataFactory, API, $scope, AuthFactory){
 	console.log('EditLodgingCtrl loaded');
 
 	$scope.params = DataFactory.searchParams;
@@ -12,14 +12,30 @@ app.controller('EditLodgingCtrl', ['$location', 'DataFactory', 'API', '$scope', 
 	};
 	// let user = AuthFactory.getUser();
 
+	let searchError = function(){
+		$scope.data.lodgingError = true;
+		delete $scope.params.lodgingOpt;
+		$timeout(function(){
+			$location.path('/savedView');
+		}, 4000);
+	};
+
 
 	$scope.getLodging = function(obj) {
+		$scope.switch = false;
 		API.getLodging($scope.params)
 		.then( (response) => {
 			console.log("getLodging response", response);
+			console.log("response.length", response.length);
 			//filter this by response.lodgingPrice not to exceed $scope.params.lodgingPriceCap
-			$scope.data.lodging = response;
-			$scope.switch = false;
+			if (response.length === 0) {
+				searchError();
+			} else {
+				$scope.data.lodging = response;
+			}
+		})
+		.catch(function(error){
+			searchError();
 		});
 	};
 

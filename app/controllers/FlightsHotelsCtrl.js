@@ -1,7 +1,7 @@
 "use strict";
 console.log("FlightsViewCtrl");
 
-app.controller('FlightsHotelsCtrl', ['API', '$scope', 'DataFactory', '$window', '$location', function(API, $scope, DataFactory, $window, $location){
+app.controller('FlightsHotelsCtrl', ['$timeout', 'API', '$scope', 'DataFactory', '$window', '$location', function($timeout, API, $scope, DataFactory, $window, $location){
 
 
 	$scope.params = DataFactory.searchParams;
@@ -12,10 +12,16 @@ app.controller('FlightsHotelsCtrl', ['API', '$scope', 'DataFactory', '$window', 
 
 	$scope.data = {
 		selected: null,
+		// flightError: false,
 		flights: [],
 		lodging: []
 	};
 
+
+	// let goHome = function(){
+	// 	console.log("goHome fired");
+	// 	$location.path('/home');
+	// };
 
 	let getFlights = function(){
 		console.log("$scope.params on when getFlights()", $scope.params);
@@ -24,6 +30,15 @@ app.controller('FlightsHotelsCtrl', ['API', '$scope', 'DataFactory', '$window', 
 		.then( (response) => {
 			$scope.data.flights = response;
 			console.log("flattenedflights in FlightsViewCtrl", $scope.data.flights);
+		})
+		.catch(function(error){
+			console.log(error);
+			$scope.data.flightError = true;
+			$scope.hideFlights = true;
+			$timeout(function(){
+				console.log("goHome fired");
+				$location.path('/home');
+			}, 4500);
 		});
 	};
 
@@ -32,12 +47,16 @@ app.controller('FlightsHotelsCtrl', ['API', '$scope', 'DataFactory', '$window', 
 		$scope.hideFlights = true;
 		// $scope.params.lodging = false;
 		$scope.params.lodgingSearch = false;
-		$scope.hideHotels = false;
 		API.getLodging($scope.params)
 		.then( (response) => {
+			$scope.hideHotels = false;
 			console.log("getLodging response", response);
 			//filter this by response.lodgingPrice not to exceed $scope.params.lodgingPriceCap
 			$scope.data.lodging = response;
+		})
+		.catch(function(error){
+			$scope.data.lodgingError = true;
+			delete $scope.params.lodgingOpt;
 		});
 	};
 
