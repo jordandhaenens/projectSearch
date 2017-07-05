@@ -1,37 +1,6 @@
-<!-- <div id="flightsContainer">
-	<div id="flightsResults">
-		<div ng-repeat="obj in data.flights" class="">
-			<div ng-class="{selected: data.selected==obj}" ng-click="updateParams(obj); data.selected=obj">
-				<h4>${{obj.airPrice}}</h4>
-				<p>Change Penalties: {{obj.changePenalties}} Refundable: {{obj.refundable}}</p>
-				<h5>Outbound Flight</h5>
-				<p>{{obj.outboundOrigin}} to {{obj.outboundDestination}}</p>
-				<p>Departs: {{obj.outboundDepTime}} Arrives: {{obj.outboundArrTime}}</p>
-				<p>Operated by {{obj.outboundAirline}}</p>
-				<p>Sold by {{obj.outboundMktAirline}}</p>
-				<p>Flight Number {{obj.outboundFlightNum}}</p>
-				<p>Travel class {{obj.outboundTravelClass}}</p>
+<!-- <div class="mainFlexArea">
 
-				<h5>Inbound Flight</h5>
-				<p>{{obj.inboundOrigin}} to {{obj.inboundDestination}}</p>
-				<p>Departs: {{obj.inboundDepTime}} Arrives: {{obj.inboundArrTime}}</p>
-				<p>Operated by {{obj.inboundAirline}}</p>
-				<p>Sold by {{obj.inboundMktAirline}}</p>
-				<p>Flight Number {{obj.inboundFlightNum}}</p>
-				<p>Travel class {{obj.inboundTravelClass}}</p>
-
-				<p></p>
-			</div>
-		</div>
-	</div>
-	<a href="#!/selectedTripView">
-		<input type="button" class="nextBtn" value="Next">
-	</a>
-</div> -->
-
-<div class="container">
-
-	<div id="resultsContainer">
+	<div id="flightResContainer">
 		<div ng-hide="hideFlights" id="flightsResults">
 			<div ng-repeat="obj in data.flights" class="">
 				<div ng-class="{selected: data.selected==obj}" ng-click="updateParams(obj); data.selected=obj">
@@ -68,6 +37,65 @@
 			</div>
 		</div>
 		<input ng-click="params.lodgingSearch ? getLodging() : selectedTripView()" type="button" class="nextBtn" value="Next">
+	</div>
+
+</div>
+ -->
+
+
+
+
+ <div class="mainFlexArea">
+
+	<div class="resultContainer">
+		<div class="" ng-hide="hideFlights" id="flightsResults">
+			<div ng-repeat="obj in data.flights" ng-class="{destResults: true, selected: data.selected==obj}" ng-click="updateParams(obj); data.selected=obj">
+				<!-- <div ng-class="{selected: data.selected==obj}" ng-click="updateParams(obj); data.selected=obj"> -->
+					<h4 class="indented">RoundTrip Price: ${{obj.airPrice}}</h4>
+					<h4 class="indented">Outbound Flight</h4>
+					<p>From {{obj.outboundOrigin}} to {{obj.outboundDestination}} Operated by {{obj.outboundAirline}}</p>
+					<p>Departs: {{obj.outboundDepTime}} Arrives: {{obj.outboundArrTime}}</p>
+					<!-- <p>Sold by {{obj.outboundMktAirline}}</p> -->
+					<p>Flight #: {{obj.outboundFlightNum}} Travel Class: {{obj.outboundTravelClass}}</p>
+					<!-- <p>Travel Class: {{obj.outboundTravelClass}}</p> -->
+
+					<h4 class="indented">Inbound Flight</h4>
+					<p>From {{obj.inboundOrigin}} to {{obj.inboundDestination}} Operated by {{obj.inboundAirline}}</p>
+					<p>Departs: {{obj.inboundDepTime}} Arrives: {{obj.inboundArrTime}}</p>
+					<!-- <p>Sold by {{obj.inboundMktAirline}}</p> -->
+					<p>Flight #: {{obj.inboundFlightNum}} Travel class: {{obj.inboundTravelClass}}</p>
+					<!-- <p>Travel class: {{obj.inboundTravelClass}}</p> -->
+					<p class="penaltiesTag">Change Penalties: {{obj.changePenalties}} Refundable: {{obj.refundable}}</p>
+				<!-- </div> -->
+			</div>
+		</div>
+
+		<div class="searchError" ng-show="data.flightError">
+			<h5>Unfortunately, there are no direct flights to {{params.destination}}. You are being redirected to the initial search page.</h5>
+		</div>
+
+		<div class="" ng-hide="hideHotels">
+			<div ng-repeat="obj in data.lodging" ng-class="{destResults: true, selected: data.selected==obj}" ng-click="updateParams(obj); data.selected=obj">
+				<!-- <div ng-class="{selected: data.selected==obj}" ng-click="updateParams(obj); data.selected=obj"> -->
+					<h4 class="indented">{{obj.propertyName}} ${{obj.lodgingPrice}} Total</h4>
+					<!-- <h4 class="indented">${{obj.lodgingPrice}} Total</h4> -->
+					<p>{{obj.street}} {{obj.city}}, {{obj.state}}</p>
+					<p>{{obj.beds}}. {{obj.roomType}}</p>
+					<p>Check-In: {{obj.checkIn}} Check-Out: {{obj.checkOut}}</p>
+				<!-- </div> -->
+			</div>
+		</div>
+
+		<div class="searchError" ng-show="data.lodgingError">
+			<h5>There are no hotels available that match your search parameters</h5>
+		</div>
+
+	</div>
+
+	<div class="buttonDiv">
+		<div class="buttons" ng-click="params.lodgingSearch ? getLodging() : selectedTripView()">
+			<p>Next</p>
+		</div>
 	</div>
 
 </div>

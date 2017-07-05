@@ -1,18 +1,5 @@
-<div class="container">
+<!-- <div class="container">
 	<div class="searchParams">
-		<!-- <label>Lodging Options</label><br>
-		<select ng-model="params.lodgingOpt" value="null">
-			<option value="hotel">Hotel</option>
-			<option value="null">Nope!</option>
-		</select><br>
-		<label>Lodging Price Cap</label><br>
-		<select ng-model="params.lodgingPriceCap" placeholder="Lodging Price Cap">
-			<option value="200">$200</option>
-			<option value="300">$300</option>
-			<option value="500">$500</option>
-			<option value="1000">$1000</option>
-			<option value="">No cap</option>
-		</select><br> -->
 		<label for="lodgingPriceCap">Lodging Price Cap</label><br>
 			<select material-select watch name="lodgingPriceCap" ng-model="params.lodgingPriceCap">
 				<option value="200">$200</option>
@@ -39,5 +26,64 @@
 	<input ng-click="selectedTripView()" type="button" class="nextBtn" value="Next">
 
 </div>
+ -->
 
 
+<div class="mainFlexArea">
+
+
+		<div ng-show="switch" id="editLodgingParams">
+
+			<div class="form-group row">
+				<div class="col-12">
+					<select class="form-control" name="lodging" ng-model="params.lodgingOpt" value="">
+						<option value="hotel">Hotel</option>
+						<option value="">Need Lodging?</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<div class="col-12">
+					<select class="form-control" name="lodgingPriceCap" ng-model="params.lodgingPriceCap">
+						<option value="200">$200</option>
+						<option value="300">$300</option>
+						<option value="500">$500</option>
+						<option value="1000">$1000</option>
+						<option value="100000">Like Royalty</option>
+						<option value="">Lodging Price Cap</option>
+					</select>
+				</div>
+			</div>
+
+		</div>
+
+
+		<div ng-hide="switch" class="resultContainer">
+
+			<div class="auto">
+				<div ng-repeat="obj in data.lodging" ng-class="{destResults: true, selected: data.selected==obj}" ng-click="updateParams(obj); data.selected=obj">
+						<h4 class="indented">{{obj.propertyName}} ${{obj.lodgingPrice}} Total</h4>
+						<p>{{obj.street}} {{obj.city}}, {{obj.state}}</p>
+						<p>{{obj.beds}}. {{obj.roomType}}</p>
+						<p>Check-In: {{obj.checkIn}} Check-Out: {{obj.checkOut}}</p>
+				</div>
+			</div>
+
+			<div class="searchError" ng-show="data.lodgingError">
+				<h4>Unfortunately, there are no hotels matching your search parameters. You are being redirected to SavedTrips</h4>
+			</div>
+		</div>
+
+		<div class="buttonDiv">
+			<div ng-show="switch" class="buttons" ng-click="getLodging()">
+				<p>Get Lodging</p>
+			</div>
+
+			<div ng-hide="switch" class="buttons" ng-click="selectedTripView()">
+				<p>Next</p>
+			</div>
+
+		</div>
+
+</div>

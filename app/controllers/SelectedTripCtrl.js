@@ -18,8 +18,8 @@ app.controller('SelectedTripCtrl', ['API', '$scope', 'DataFactory', '$window', '
 			console.log("return from editToFB", data);
 			DataFactory.searchParams = {
 			lodging: false,
-			hotelDays: "10", //update this reset once i am using momentjs to calculate. This will be set in HomeViewCtrl
-			totalDays: "10" //update this reset once i am using momentjs to calculate. This will be set in HomeViewCtrl
+			// hotelDays: "10", //update this reset once i am using momentjs to calculate. This will be set in HomeViewCtrl
+			// totalDays: "10" //update this reset once i am using momentjs to calculate. This will be set in HomeViewCtrl
 			};
 			console.log("DataFactory params at scrap fire", DataFactory.searchParams);
 			$location.path('/savedView');

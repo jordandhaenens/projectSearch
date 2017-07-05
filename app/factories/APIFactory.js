@@ -81,22 +81,23 @@ app.factory('API', ["$q", "$http", "LowFare", "Inspiration", "Location", "Hotel"
 	//
 	const getLodging = (searchParams) => {
 		//this function will return lodging from the amadeus API
-		let params = searchParams;
 		console.log("searchParams passed to APIFactory", searchParams);
-		//params.outboundArrTime (check-in date) should be filtered through momentjs to give a date sans time
-		//params.inboundDepTime (check-out date) should be filtered through momentjs to give a date sans time
-		let outboundArrTime = moment(params.outboundArrTime, 'yyyy-mm-dd');
-		let inboundDepTime = moment(params.inboundDepTime, 'yyyy-mm-dd');
+		let params = searchParams;
+		let outboundArrTime = moment(new Date(params.outboundArrTime), 'YYYY-MM-DD');
+		let inboundDepTime = moment(new Date(params.inboundDepTime), 'YYYY-MM-DD');
 		console.log('outboundArrTime', outboundArrTime, 'inboundDepTime', inboundDepTime);
-		params.hotelDays = inboundDepTime.from(outboundArrTime, 'days');
+		params.hotelDays = inboundDepTime.diff(outboundArrTime, 'days');
 		console.log('params.hotelDays', params.hotelDays);
-
+		outboundArrTime = moment(outboundArrTime).format('YYYY-MM-DD');
+		inboundDepTime = moment(inboundDepTime).format('YYYY-MM-DD');
 
 		let dailyRate = (params.lodgingPriceCap / params.hotelDays);
+		// let dailyRate = (params.lodgingPriceCap / params.totalDays);
 		return $q( (resolve, reject) => {
-			$http.get(`${Hotel.databaseUrl}apikey=${Hotel.apiKey}&location=${params.destination}&check_in=${params.depDate}&check_out=${params.retDate}&radius=42&lang=en&max_rate=${dailyRate}&number_of_results=20`)
+			$http.get(`${Hotel.databaseUrl}apikey=${Hotel.apiKey}&location=${params.destination}&check_in=${outboundArrTime}&check_out=${inboundDepTime}&radius=42&lang=en&max_rate=${dailyRate}&number_of_results=20`)
 			.then( (stuff) => {
 				let results = stuff.data.results;
+				console.log("hotel results from factory", stuff);
 				let arr = [];
 				let obj = {};
 				results.forEach(function(currObj){
@@ -114,6 +115,7 @@ app.factory('API', ["$q", "$http", "LowFare", "Inspiration", "Location", "Hotel"
 					arr.push(obj);
 				});
 				resolve(arr);
+				console.log("hotels from api", arr);
 			})
 			.catch( (error) => {
 				reject(error);

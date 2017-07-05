@@ -1,49 +1,303 @@
-html, body {
+/******************
+New Styling
+******************/
+html {
 	width: 100%;
 	height: 100%;
+	margin: 0;
 }
 
-.container {
-	height: 80%;
-	width: 80%;
-	margin-top: 5rem;
+body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	background: url(../pics/sunrisePalmFrond.jpg) no-repeat;
+	background-size: cover;
 }
 
-.flexy {
+p {
+	margin: 0 !important;
+}
+
+#navBar {
 	display: flex;
 	justify-content: space-between;
+	width: 100vw;
+	height: 4rem;
+	background-color: rgba(108, 110, 124, 0.8);
 }
 
-#homeResultContainer {
-	// display: flex;
-	// justify-content: center;
-	border: solid 1px black;
-	/*width: 60%;
-	height: 70%;*/
-	width: 600px;
-	height: 600px;
+// #flexContainer {
+// 	height: 100vh;
+// 	margin-top: -4rem;
+// 	padding-top: 4rem;
+// 	display: flex;
+// }
+
+
+.mainFlexArea {
+	// flex-grow: auto;
+	height: 92vh;
+	display: flex;
+	justify-content: center;
+}
+
+input, select {
+	// width: 50% !important;
+	// display: inline-block;
+	background-color: rgba(255, 255, 255, 0.8) !important;
+	color: rgb(84, 85, 86) !important;
+}
+
+label {
+	color: white;
+}
+
+.auto {
 	margin: auto;
 }
 
-.homeResultBox {
-	border-bottom: solid 1px black;
-	width: 600px;
-	height: 550px;
+/********************
+NavBar
+********************/
+#navPartial {
+	display: flex;
+	width: auto;
+	height: 4rem;
+	margin: 0;
+}
+
+.navBtn {
+	display: flex;
+    color: white;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+}
+
+.navBtn p {
+	margin: auto;
+}
+
+.navBtn:hover {
+	background-color: rgba(47, 61, 71, 0.6);
+	// border-left: 2px solid rgba(255, 255, 255, 0.8);
+	// border-right: 2px solid rgba(255, 255, 255, 0.8);
+}
+
+#logo {
+	display: flex;
+    color: white;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+}
+
+/********************
+NavBar End
+********************
+HomeView
+********************/
+#searchParams {
+	width: 35%;
+	margin: auto 0 auto 25%;
+	padding: 0 0 0 5%;
+}
+
+
+.resultContainer {
+	display: flex;
+	flex-direction: column;
+	border-radius: 0.25rem;
+	width: 55%;
+	height: 80vh;
+	margin: auto 0 auto 5%;
+	overflow: scroll;
+}
+
+.destResults {
+	display: block;
+	// justify-content: space-around;
+	width: 100%;
+	height: auto;
+	margin: 1rem 0;
+	padding: 0.5rem 0.5rem;
+	border-radius: 0.25rem;
+	background-color: rgba(255, 255, 255, 0.8);
+	color: rgb(84, 85, 86);
+}
+
+.destResults h3 {
+	margin: auto 0;
+}
+
+.buttonDiv {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 20%;
+	height: 80vh;
+	margin: auto 5%;
+}
+/********************
+HomeView End
+*********************
+FlightsView
+********************/
+.indented {
+	margin: 1rem 2rem;
+}
+
+.penaltiesTag {
+	margin: 1rem 0 2rem;
+}
+
+.searchError {
+	width: 100%;
+	height: auto;
+	margin: auto;
+	padding: 0.5rem 0.5rem;
+	border-radius: 0.25rem;
+	background-color: rgba(255, 255, 255, 0.8);
+	color: rgb(84, 85, 86);
+}
+
+/*********************
+FlightsView End
+*********************
+SavedTripView
+*********************/
+#savedContainer {
+	display: flex;
+	flex-direction: column;
+	border-radius: 0.25rem;
+	width: 80%;
+	height: 80vh;
 	margin: auto;
 	overflow: scroll;
 }
 
-#searchParams {
+.savedResults {
 	display: block;
-	/*justify-content: space-around;*/
-	border: solid 1px black;
-	/*width: 30%;
-	height: 70%;*/
-	width: 300px;
-	height: 600px;
+	// flex-direction: column;
+	width: 100%;
+	height: auto;
+	margin: 1rem 0;
+	padding: 0.5rem 0.5rem;
+	border-radius: 0.25rem;
+	background-color: rgba(255, 255, 255, 0.8);
+	color: rgb(84, 85, 86);
+}
+
+#savedViewBtns {
+	display: flex;
+	width: auto;
+	height: 4rem;
+}
+
+.savedViewBtns {
+	display: flex;
+	color: rgb(84, 85, 86);
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+}
+
+.savedViewBtns p {
 	margin: auto;
 }
 
-.selected {
-	background-color: lightblue;
+.savedViewBtns:hover {
+	background-color: rgba(47, 61, 71, 0.6);
+	color: white;
 }
+
+
+
+/*********************
+SavedTripView End
+**********************
+EditLodgingView
+*********************/
+
+#editLodgingParams {
+	width: 35%;
+	margin: auto 0 auto 25%;
+	padding: 0 0 0 5%;
+}
+
+/*********************
+EditLodgingView End
+*********************/
+
+.buttons {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 110px;
+	height: 110px;
+	margin: auto;
+	border-radius: 50%;
+	color: green;
+	// background-color: #4CAF50;
+	background-color: rgba(255, 255, 255, 0.8);
+}
+
+
+.selected {
+	background-color: rgba(239, 116, 110, 0.8);
+}
+
+/*Dropdown Styling*/
+// .dropdown {
+// 	width: 100%;
+// 	position: relative;
+//     display: inline-block;
+//     margin-top: 1em;
+// }
+
+// .dropBtn {
+// 	width: 100%;
+// 	background-color: #4CAF50;
+//     color: white;
+//     padding: 16px;
+//     font-size: 16px;
+//     border: none;
+//     cursor: pointer;
+// }
+
+// .dropdown-content {
+// 	display: none;
+//     position: absolute;
+//     background-color: #f9f9f9;
+//     min-width: 100%;
+//     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+//     z-index: 1;
+// }
+
+// .dropdown-content a {
+//     color: black;
+//     padding: 12px 16px;
+//     text-decoration: none;
+//     display: block;
+// }
+
+// .dropdown-content a:hover {
+// 	background-color: #f1f1f1;
+// }
+
+// .dropdown:hover .dropdown-content {
+//     display: block;
+// }
+
+// .dropdown:hover .dropbtn {
+//     background-color: #3e8e41;
+// }
+
+/*End Dropdown Styling*/
+
+
+
