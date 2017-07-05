@@ -109,8 +109,8 @@ app.factory('API', ["$q", "$http", "LowFare", "Inspiration", "Location", "Hotel"
 						beds: currObj.rooms[0].room_type_info.number_of_beds + " " + currObj.rooms[0].room_type_info.bed_type,
 						roomType: currObj.rooms[0].room_type_info.room_type,
 						lodgingPrice: currObj.total_price.amount,
-						checkIn: outboundArrTime,//use the filtered params.outboundArrTime for check-in date
-						checkOut: inboundDepTime//use the filtered params.inboundDepTime for check-out date
+						checkIn: outboundArrTime,
+						checkOut: inboundDepTime
 					};
 					arr.push(obj);
 				});
