@@ -13,6 +13,7 @@ app.controller('HomeViewCtrl', ['API', '$scope', 'DataFactory', '$window', funct
 		flights: ""
 	};
 
+
 	$scope.updateParams = (something) => {
 		$scope.params.destination = something;
 		console.log("$scope.params", $scope.params);

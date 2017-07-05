@@ -4,6 +4,7 @@ console.log("FlightsViewCtrl");
 app.controller('FlightsHotelsCtrl', ['$timeout', 'API', '$scope', 'DataFactory', '$window', '$location', function($timeout, API, $scope, DataFactory, $window, $location){
 
 
+
 	$scope.params = DataFactory.searchParams;
 	console.log("searchParams in FlightsHotelsCtrl", $scope.params);
 	$scope.hideHotels = true;

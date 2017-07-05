@@ -16,6 +16,7 @@ app.controller('EditLodgingCtrl', ['$timeout', '$location', 'DataFactory', 'API'
 		$scope.data.lodgingError = true;
 		delete $scope.params.lodgingOpt;
 		$timeout(function(){
+			delete $scope.data.lodgingError;
 			$location.path('/savedView');
 		}, 4000);
 	};
