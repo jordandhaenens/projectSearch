@@ -1,7 +1,7 @@
 "use strict";
 console.log("HomeViewCtrl");
 
-app.controller('HomeViewCtrl', ['API', '$scope', 'DataFactory', '$window', function(API, $scope, DataFactory, $window){
+app.controller('HomeViewCtrl', ['$location', '$timeout', 'API', '$scope', 'DataFactory', '$window', function($location, $timeout, API, $scope, DataFactory, $window){
 
 	$scope.switch = true;
 	$scope.params = DataFactory.searchParams;
@@ -33,14 +33,21 @@ app.controller('HomeViewCtrl', ['API', '$scope', 'DataFactory', '$window', funct
 		if ($scope.params.lodgingOpt !== ""){ //should this be equals instead?
 			$scope.params.lodging = true;
 		}
+		$scope.switch = false;
 		API.getDestinations($scope.params)
 		.then( (response) => {
 			$scope.data.fullData = response;
 			$scope.data.flights = response.results;
 			console.log("$scope.data", $scope.data.fullData);
 			console.log("$scope.flights", $scope.data.flights);
-			$scope.switch = false;
-			console.log("switch", $scope.switch);
+		})
+		.catch(function(){
+			$scope.data.flightError = true;
+			$timeout(function(){
+				$location.path('/home');
+				$scope.switch = true;
+				delete $scope.data.flightError;
+			}, 4000);
 		});
 	};
 
@@ -48,7 +55,6 @@ app.controller('HomeViewCtrl', ['API', '$scope', 'DataFactory', '$window', funct
 
 	//Subtract retDate date obj from depDate date obj to get duration and add to $scope.params
 	// $scope.params.duration = duration($scope.params.retDate, $scope.params.depDate);
-
 	let duration = function(retDate, depDate){
 		let dep = moment(new Date(depDate), 'yyyy-mm-dd');
 		let ret = moment(new Date(retDate), 'yyyy-mm-dd');
@@ -57,7 +63,6 @@ app.controller('HomeViewCtrl', ['API', '$scope', 'DataFactory', '$window', funct
 		console.log("days", days);
 		//add days to params
 		$scope.params.totalDays = days;
-		//$scope.params.hotelDays = days; //this is until I tie hotelDays to flight times
 	};
 
 	//This is for the date-picker

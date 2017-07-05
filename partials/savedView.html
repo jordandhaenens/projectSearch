@@ -39,18 +39,18 @@
 			<h4 class="indented">RoundTrip Air: ${{params.airPrice}}</h4>
 			<div>
 				<div>
-					<h6 class="indented">Outbound Flight</h6>
-					<p>From {{params.outboundOrigin}} to {{params.outboundDestination}} On {{params.outboundAirline}}</p>
-					<p>Departs: {{params.outboundDepTime}}</p>
-					<p>Arrives: {{params.outboundArrTime}}</p>
+					<h5 class="indented">Outbound Flight: {{params.outboundOrigin}} to {{params.outboundDestination}} on {{params.outboundAirline}}</h5>
+					<!-- <p>From {{params.outboundOrigin}} to {{params.outboundDestination}} On {{params.outboundAirline}}</p> -->
+					<p><strong>Departs:</strong> {{params.outboundDepTime}} <strong>Arrives:</strong> {{params.outboundArrTime}}</p>
+					<!-- <p>Arrives: {{params.outboundArrTime}}</p> -->
 					<p>Flight #: {{params.outboundFlightNum}} Travel Class: {{params.outboundTravelClass}}</p>
 				</div>
 
 				<div>
-					<h6 class="indented">Inbound Flight</h6>
-					<p>From {{params.inboundOrigin}} to {{params.inboundDestination}} Operated by {{params.inboundAirline}}</p>
-					<p>Departs: {{params.inboundDepTime}}</p>
-					<p>Arrives: {{params.inboundArrTime}}</p>
+					<h5 class="indented">Inbound Flight: {{params.inboundOrigin}} to {{params.inboundDestination}} on {{params.inboundAirline}}</h5>
+					<!-- <p>From {{params.inboundOrigin}} to {{params.inboundDestination}} on {{params.inboundAirline}}</p> -->
+					<p><strong>Departs:</strong> {{params.inboundDepTime}} <strong>Arrives:</strong> {{params.inboundArrTime}}</p>
+					<!-- <p><strong>Arrives:</strong> {{params.inboundArrTime}}</p> -->
 					<p>Flight #: {{params.inboundFlightNum}} Travel class: {{params.inboundTravelClass}}</p>
 					<p class="penaltiesTag">Change Penalties: {{params.changePenalties}} Refundable: {{params.refundable}}</p>
 				</div>
@@ -58,8 +58,8 @@
 			<hr>
 
 			<div ng-show="params.lodging">
-				<h4>{{params.propertyName}}</h4>
-				<h4>${{params.lodgingPrice}} Total</h4>
+				<h4 class="indented">{{params.propertyName}}</h4>
+				<h4 class="indented">${{params.lodgingPrice}} Total</h4>
 				<p>{{params.street}} {{params.city}}, {{params.state}}</p>
 				<p>{{params.beds}}. {{params.roomType}}</p>
 				<p>Check-In: {{params.checkIn}} Check-Out: {{params.checkOut}}</p>

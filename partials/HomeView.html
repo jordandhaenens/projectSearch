@@ -2,61 +2,7 @@
 
 
 		<div ng-show="switch" id="searchParams">
-			<!-- <label for="departureDate">Choose a Departure Date</label>
-			<input watch input-date
-			    type="text"
-			    name="departureDate"
-			    id="departureDate"
-			    ng-model="params.depDate"
-			    container=""
-			    format="yyyy-mm-dd"
-			    months-full="{{ month }}"
-			    months-short="{{ monthShort }}"
-			    weekdays-full="{{ weekdaysFull }}"
-			    weekdays-short="{{ weekdaysShort }}"
-			    weekdays-letter="{{ weekdaysLetter }}"
-			    disable="disable"
-			    min="{{ minDate }}"
-			    max="{{ maxDate }}"
-			    today="today"
-			    first-day="1"
-			    clear="clear"
-			    close="close"
-			    select-years="15"
-			    on-start="onStart()"
-			    on-render="onRender()"
-			    on-open="onOpen()"
-			    on-close="onClose()"
-			    on-set="onSet()"
-			    on-stop="onStop()" />
 
-			    <label for="retDate">Choose a Return Date</label>
-				<input watch input-date
-				    type="text"
-				    name="retDate"
-				    id="retDate"
-				    ng-model="params.retDate"
-				    container=""
-				    format="yyyy-mm-dd"
-				    months-full="{{ month }}"
-				    months-short="{{ monthShort }}"
-				    weekdays-full="{{ weekdaysFull }}"
-				    weekdays-short="{{ weekdaysShort }}"
-				    weekdays-letter="{{ weekdaysLetter }}"
-				    disable="disable"
-				    min="{{ minDate }}"
-				    max="{{ maxDate }}"
-				    today="today"
-				    first-day="1"
-				    clear="clear"
-				    close="close"
-				    select-years="15"
-				    on-start="onStart()"
-				    on-render="onRender()"
-				    on-open="onOpen()"
-				    on-close="onClose()"
-				    on-set="onSet()"
-				    on-stop="onStop()" /> -->
 			<div class="form-group row">
 				<label for="depDate" class="col-5 column-form-label">Departure Date</label>
 				<div class="col-7">
@@ -131,15 +77,14 @@
 		</div>
 
 		<div ng-hide="switch" class="resultContainer">
-			<!-- <div class="homeResultBox"> -->
 				<div ng-repeat="item in data.flights" ng-class="{destResults: true, selected: data.selected==item}" ng-click="updateParams(item.destination); data.selected=item">
-					<!-- <div ng-class="{destResults: true, selected: data.selected==item}" ng-click="updateParams(item.destination); data.selected=item"> -->
-					<h3>You can fly to {{item.destination}} for <!-- {{data.fullData.currency}}{{item.price}}</h3> -->
-					${{item.price}}!</h3>
+					<h3>You can fly to {{item.destination}} for ${{item.price}}!</h3>
 					<p>Departing: {{item.departure_date}}<br>Returning: {{item.return_date}}</p>
-					<!-- </div> -->
 				</div>
-			<!-- </div> -->
+
+				<div class="searchError" ng-show="data.flightError">
+					<h5>Unfortunately, there are no direct flights matching your parameters. You are being redirected to the initial search page.</h5>
+				</div>
 		</div>
 
 		<div class="buttonDiv">

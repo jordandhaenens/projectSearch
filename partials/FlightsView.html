@@ -48,7 +48,7 @@
  <div class="mainFlexArea">
 
 	<div class="resultContainer">
-		<div class="auto" ng-hide="hideFlights" id="flightsResults">
+		<div class="" ng-hide="hideFlights" id="flightsResults">
 			<div ng-repeat="obj in data.flights" ng-class="{destResults: true, selected: data.selected==obj}" ng-click="updateParams(obj); data.selected=obj">
 				<!-- <div ng-class="{selected: data.selected==obj}" ng-click="updateParams(obj); data.selected=obj"> -->
 					<h4 class="indented">RoundTrip Price: ${{obj.airPrice}}</h4>
@@ -70,14 +70,11 @@
 			</div>
 		</div>
 
-		<div class="auto" ng-show="data.flightError">
-			<div class="searchError">
-				<h5>Unfortunately, there are no direct flights to {{params.destination}}.</h5>
-				<p>You are being redirected to the initial search page.</p>
-			</div>
+		<div class="searchError" ng-show="data.flightError">
+			<h5>Unfortunately, there are no direct flights to {{params.destination}}. You are being redirected to the initial search page.</h5>
 		</div>
 
-		<div class="auto" ng-hide="hideHotels">
+		<div class="" ng-hide="hideHotels">
 			<div ng-repeat="obj in data.lodging" ng-class="{destResults: true, selected: data.selected==obj}" ng-click="updateParams(obj); data.selected=obj">
 				<!-- <div ng-class="{selected: data.selected==obj}" ng-click="updateParams(obj); data.selected=obj"> -->
 					<h4 class="indented">{{obj.propertyName}} ${{obj.lodgingPrice}} Total</h4>
@@ -89,10 +86,8 @@
 			</div>
 		</div>
 
-		<div class="auto" ng-show="data.lodgingError">
-			<div class="searchError">
-				<h4>There are no hotels available that match your search parameters</h4>
-			</div>
+		<div class="searchError" ng-show="data.lodgingError">
+			<h5>There are no hotels available that match your search parameters</h5>
 		</div>
 
 	</div>
