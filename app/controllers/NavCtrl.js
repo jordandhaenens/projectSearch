@@ -26,7 +26,6 @@ app.controller('NavbarCtrl', ['AuthFactory', '$scope', '$location', 'DataFactory
 
 	//
 	$scope.logIn = function(){
-		// AuthFactory.getUser();
 		console.log("login running");
 		AuthFactory.loginWithProvider()
 		.then(function(data){
@@ -66,9 +65,8 @@ app.controller('NavbarCtrl', ['AuthFactory', '$scope', '$location', 'DataFactory
 	$scope.goHome = function(){
 		DataFactory.searchParams = {
 			lodging: false,
-			//hotelDays: "10", //update this reset once i am using momentjs to calculate. This will be set in HomeViewCtrl
 		};
-		console.log("DataFactory params at scrap fire", DataFactory.searchParams);
+		// console.log("DataFactory params at scrap fire", DataFactory.searchParams);
 		$location.path('/home');
 	};
 

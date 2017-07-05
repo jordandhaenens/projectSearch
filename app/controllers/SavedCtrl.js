@@ -5,11 +5,10 @@ app.controller('SavedCtrl', ['$location', 'DataFactory', 'API', '$scope', 'AuthF
 	console.log('SavedCtrl loaded');
 
 	$scope.searchParams = DataFactory.searchParams;
-	$scope.data = []; //this holds FB trip objects filtered by depDate
-	// $scope.showHotel = ;
+	$scope.data = []; //this holds FB trip objects
+
 	let user = AuthFactory.getUser();
 
-	//editTrip() is not working in this scenario though it works when i change lodging
 	$scope.remLodging = function(params) {
 		//remove lodging from SearchParams and updated obj in FB
 		let obj = params;
@@ -27,7 +26,7 @@ app.controller('SavedCtrl', ['$location', 'DataFactory', 'API', '$scope', 'AuthF
 		delete obj.state;
 		delete obj.street;
 		$scope.searchParams = obj;
-		console.log("obj passed to removeLodging()", $scope.searchParams);
+		// console.log("obj passed to removeLodging()", $scope.searchParams);
 		API.removeLodging($scope.searchParams, $scope.searchParams.tripID)
 		.then( function(response) {
 			getTrips();
@@ -51,7 +50,7 @@ app.controller('SavedCtrl', ['$location', 'DataFactory', 'API', '$scope', 'AuthF
 		DataFactory.searchParams = obj;
 		//add an editLodging boolean to searchParams
 		DataFactory.searchParams.editLodging = true;
-		//navigate to home
+		//navigate to editLodging
 		$location.path('/editLodging');
 	};
 

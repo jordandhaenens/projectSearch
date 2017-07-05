@@ -1,72 +1,21 @@
-<!-- <div class="mainFlexArea">
-
-	<div id="flightResContainer">
-		<div ng-hide="hideFlights" id="flightsResults">
-			<div ng-repeat="obj in data.flights" class="">
-				<div ng-class="{selected: data.selected==obj}" ng-click="updateParams(obj); data.selected=obj">
-					<h4>${{obj.airPrice}}</h4>
-					<p>Change Penalties: {{obj.changePenalties}} Refundable: {{obj.refundable}}</p>
-					<h5>Outbound Flight</h5>
-					<p>{{obj.outboundOrigin}} to {{obj.outboundDestination}}</p>
-					<p>Departs: {{obj.outboundDepTime}} Arrives: {{obj.outboundArrTime}}</p>
-					<p>Operated by {{obj.outboundAirline}}</p>
-					<p>Sold by {{obj.outboundMktAirline}}</p>
-					<p>Flight Number {{obj.outboundFlightNum}}</p>
-					<p>Travel class {{obj.outboundTravelClass}}</p>
-
-					<h4>Inbound Flight</h4>
-					<p>{{obj.inboundOrigin}} to {{obj.inboundDestination}}</p>
-					<p>Departs: {{obj.inboundDepTime}} Arrives: {{obj.inboundArrTime}}</p>
-					<p>Operated by {{obj.inboundAirline}}</p>
-					<p>Sold by {{obj.inboundMktAirline}}</p>
-					<p>Flight Number {{obj.inboundFlightNum}}</p>
-					<p>Travel class {{obj.inboundTravelClass}}</p>
-				</div>
-			</div>
-		</div>
-
-		<div ng-hide="hideHotels" class="hotelResults">
-			<div ng-repeat="obj in data.lodging" class="">
-				<div ng-class="{selected: data.selected==obj}" ng-click="updateParams(obj); data.selected=obj">
-					<h4>{{obj.propertyName}}</h4>
-					<h4>${{obj.lodgingPrice}} Total</h4>
-					<p>{{obj.street}} {{obj.city}}, {{obj.state}}</p>
-					<p>{{obj.beds}}. {{obj.roomType}}</p>
-					<p>Check-In: {{obj.checkIn}} Check-Out: {{obj.checkOut}}</p>
-				</div>
-			</div>
-		</div>
-		<input ng-click="params.lodgingSearch ? getLodging() : selectedTripView()" type="button" class="nextBtn" value="Next">
-	</div>
-
-</div>
- -->
-
-
-
-
  <div class="mainFlexArea">
 
 	<div class="resultContainer">
 		<div class="" ng-hide="hideFlights" id="flightsResults">
 			<div ng-repeat="obj in data.flights" ng-class="{destResults: true, selected: data.selected==obj}" ng-click="updateParams(obj); data.selected=obj">
-				<!-- <div ng-class="{selected: data.selected==obj}" ng-click="updateParams(obj); data.selected=obj"> -->
-					<h4 class="indented">RoundTrip Price: ${{obj.airPrice}}</h4>
-					<h4 class="indented">Outbound Flight</h4>
-					<p>From {{obj.outboundOrigin}} to {{obj.outboundDestination}} Operated by {{obj.outboundAirline}}</p>
-					<p>Departs: {{obj.outboundDepTime}} Arrives: {{obj.outboundArrTime}}</p>
-					<!-- <p>Sold by {{obj.outboundMktAirline}}</p> -->
-					<p>Flight #: {{obj.outboundFlightNum}} Travel Class: {{obj.outboundTravelClass}}</p>
-					<!-- <p>Travel Class: {{obj.outboundTravelClass}}</p> -->
+				<h4 class="indented">RoundTrip Price: ${{obj.airPrice}}</h4>
+				<h5 class="indented">Outbound Flight: {{obj.outboundOrigin}} to {{obj.outboundDestination}} on {{obj.outboundAirline}}</h5>
+				<!-- <p>From {{obj.outboundOrigin}} to {{obj.outboundDestination}} Operated by {{obj.outboundAirline}}</p> -->
+				<p><strong>Departs:</strong> {{obj.outboundDepTime}} <strong>Arrives:</strong> {{obj.outboundArrTime}}</p>
+				<!-- <p>Sold by {{obj.outboundMktAirline}}</p> -->
+				<p>Flight #: {{obj.outboundFlightNum}} Travel Class: {{obj.outboundTravelClass}}</p>
 
-					<h4 class="indented">Inbound Flight</h4>
-					<p>From {{obj.inboundOrigin}} to {{obj.inboundDestination}} Operated by {{obj.inboundAirline}}</p>
-					<p>Departs: {{obj.inboundDepTime}} Arrives: {{obj.inboundArrTime}}</p>
-					<!-- <p>Sold by {{obj.inboundMktAirline}}</p> -->
-					<p>Flight #: {{obj.inboundFlightNum}} Travel class: {{obj.inboundTravelClass}}</p>
-					<!-- <p>Travel class: {{obj.inboundTravelClass}}</p> -->
-					<p class="penaltiesTag">Change Penalties: {{obj.changePenalties}} Refundable: {{obj.refundable}}</p>
-				<!-- </div> -->
+				<h5 class="indented">Inbound Flight: {{obj.inboundOrigin}} to {{obj.inboundDestination}} on {{obj.inboundAirline}}</h5>
+				<!-- <p>From {{obj.inboundOrigin}} to {{obj.inboundDestination}} Operated by {{obj.inboundAirline}}</p> -->
+				<p><strong>Departs:</strong> {{obj.inboundDepTime}} <strong>Arrives:</strong> {{obj.inboundArrTime}}</p>
+				<!-- <p>Sold by {{obj.inboundMktAirline}}</p> -->
+				<p>Flight #: {{obj.inboundFlightNum}} Travel class: {{obj.inboundTravelClass}}</p>
+				<p class="penaltiesTag">Change Penalties: {{obj.changePenalties}} Refundable: {{obj.refundable}}</p>
 			</div>
 		</div>
 
@@ -76,13 +25,10 @@
 
 		<div class="" ng-hide="hideHotels">
 			<div ng-repeat="obj in data.lodging" ng-class="{destResults: true, selected: data.selected==obj}" ng-click="updateParams(obj); data.selected=obj">
-				<!-- <div ng-class="{selected: data.selected==obj}" ng-click="updateParams(obj); data.selected=obj"> -->
-					<h4 class="indented">{{obj.propertyName}} ${{obj.lodgingPrice}} Total</h4>
-					<!-- <h4 class="indented">${{obj.lodgingPrice}} Total</h4> -->
-					<p>{{obj.street}} {{obj.city}}, {{obj.state}}</p>
-					<p>{{obj.beds}}. {{obj.roomType}}</p>
-					<p>Check-In: {{obj.checkIn}} Check-Out: {{obj.checkOut}}</p>
-				<!-- </div> -->
+				<h4 class="indented">{{obj.propertyName}} ${{obj.lodgingPrice}} Total</h4>
+				<p>{{obj.street}} {{obj.city}}, {{obj.state}}</p>
+				<p>{{obj.beds}}. {{obj.roomType}}</p>
+				<p>Check-In: {{obj.checkIn}} Check-Out: {{obj.checkOut}}</p>
 			</div>
 		</div>
 

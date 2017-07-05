@@ -10,7 +10,7 @@ app.controller('EditLodgingCtrl', ['$timeout', '$location', 'DataFactory', 'API'
 		selected: null,
 		lodging: []
 	};
-	// let user = AuthFactory.getUser();
+
 
 	let searchError = function(){
 		$scope.data.lodgingError = true;
@@ -41,7 +41,6 @@ app.controller('EditLodgingCtrl', ['$timeout', '$location', 'DataFactory', 'API'
 	};
 
 
-	//
 	$scope.updateParams = function(obj) { //obj is the selected flight or hotel from the partial
 		// let troll = "$$hashKey";
 		Object.keys(obj).forEach(function(keyVal){
@@ -54,7 +53,6 @@ app.controller('EditLodgingCtrl', ['$timeout', '$location', 'DataFactory', 'API'
 	};
 
 
-	//
 	$scope.selectedTripView = function() {
 		$location.path('/selectedTripView');
 	};
