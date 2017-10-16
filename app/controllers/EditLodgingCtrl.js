@@ -28,7 +28,6 @@ app.controller('EditLodgingCtrl', ['$timeout', '$location', 'DataFactory', 'API'
 		.then( (response) => {
 			console.log("getLodging response", response);
 			console.log("response.length", response.length);
-			//filter this by response.lodgingPrice not to exceed $scope.params.lodgingPriceCap
 			if (response.length === 0) {
 				searchError();
 			} else {
@@ -42,12 +41,9 @@ app.controller('EditLodgingCtrl', ['$timeout', '$location', 'DataFactory', 'API'
 
 
 	$scope.updateParams = function(obj) { //obj is the selected flight or hotel from the partial
-		// let troll = "$$hashKey";
 		Object.keys(obj).forEach(function(keyVal){
-			// if (keyVal !== troll) {
-				$scope.params[keyVal] = obj[keyVal];
-				console.log('keyVal added to searchParams', obj[keyVal]);
-			// }
+			$scope.params[keyVal] = obj[keyVal];
+			console.log('keyVal added to searchParams', obj[keyVal]);
 		});
 		console.log("updated $scope.params", $scope.params);
 	};

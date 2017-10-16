@@ -7,7 +7,6 @@ app.factory('AuthFactory', [function(){
 
 	//
 	let getUser = () => {
-		// console.log('currentUser', currentUser);
 		return currentUser;
 	};
 
@@ -22,12 +21,10 @@ app.factory('AuthFactory', [function(){
 
     //
     let isAuthenticated = function (){
-        // console.log("isAuthenticated fired AuthFactory");
         return new Promise ( (resolve, reject) => {
             firebase.auth().onAuthStateChanged( (user) => {
                 if (user){
                     currentUser = user.uid;
-                    console.log("user", user.uid);
                     resolve(true);
                 }else {
                     resolve(false);
@@ -39,7 +36,6 @@ app.factory('AuthFactory', [function(){
 
 	//
 	let logoutUser = function(){
-        // console.log(currentUser, "logged out");
         return firebase.auth().signOut();
     };
 
