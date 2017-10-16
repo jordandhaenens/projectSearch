@@ -5,8 +5,6 @@ app.controller('HomeViewCtrl', ['$location', '$timeout', 'API', '$scope', 'DataF
 
 	$scope.switch = true;
 	$scope.params = DataFactory.searchParams;
-	// console.log("searchParams in HomeViewCtrl", $scope.params);
-
 	$scope.data = {
 		selected: null,
 		fullData: "", //this gives access to the currency
@@ -17,7 +15,6 @@ app.controller('HomeViewCtrl', ['$location', '$timeout', 'API', '$scope', 'DataF
 	$scope.updateParams = (something) => {
 		$scope.params.destination = something;
 		console.log("$scope.params", $scope.params);
-		//testing to keep lodging = true
 		if ($scope.params.lodging !== false) {
 			$scope.params.lodgingSearch = true;
 		}
@@ -30,7 +27,6 @@ app.controller('HomeViewCtrl', ['$location', '$timeout', 'API', '$scope', 'DataF
 		$scope.params.retDate = r;
 		$scope.params.depDate = d;
 		duration($scope.params.retDate, $scope.params.depDate);
-		// console.log("lodgingOpt", $scope.params.lodgingOpt);
 		if ($scope.params.lodgingOpt !== ""){
 			$scope.params.lodging = true;
 		}
@@ -39,8 +35,6 @@ app.controller('HomeViewCtrl', ['$location', '$timeout', 'API', '$scope', 'DataF
 		.then( (response) => {
 			$scope.data.fullData = response;
 			$scope.data.flights = response.results;
-			// console.log("$scope.data", $scope.data.fullData);
-			// console.log("$scope.flights", $scope.data.flights);
 		})
 		.catch(function(){
 			$scope.data.flightError = true;

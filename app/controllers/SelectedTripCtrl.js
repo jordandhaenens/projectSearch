@@ -15,11 +15,9 @@ app.controller('SelectedTripCtrl', ['API', '$scope', 'DataFactory', '$window', '
 		$scope.params.lodging = true;
 		API.editTrip($scope.params, $scope.params.tripID)
 		.then( function(data) {
-			// console.log("return from editToFB", data);
 			DataFactory.searchParams = {
 			lodging: false,
 			};
-			// console.log("DataFactory params at scrap fire", DataFactory.searchParams);
 			$location.path('/savedView');
 		});
 	};
@@ -28,11 +26,9 @@ app.controller('SelectedTripCtrl', ['API', '$scope', 'DataFactory', '$window', '
 	$scope.saveToFB = function(){
 		//grab current uid and assign to $scope.params.uid
 		$scope.params.uid = $scope.user;
-		// console.log("$scope.params before being passed to addTrip()", $scope.params);
 		//this should save the entire params object to FB
 		API.addTrip($scope.params)
 		.then( function(data){
-			// console.log("return from saveToFB", data);
 			//clear params and head home
 			$scope.scrap();
 		});
@@ -43,13 +39,8 @@ app.controller('SelectedTripCtrl', ['API', '$scope', 'DataFactory', '$window', '
 		DataFactory.searchParams = {
 			lodging: false,
 		};
-		// console.log("params at scrap fire", $scope.params);
-		// console.log("DataFactory params at scrap fire", DataFactory.searchParams);
 		$location.path('/home');
 	};
-
-
-
 
 }]);
 

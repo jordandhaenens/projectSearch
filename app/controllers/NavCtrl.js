@@ -5,8 +5,7 @@
 app.controller('NavbarCtrl', ['AuthFactory', '$scope', '$location', 'DataFactory', function(AuthFactory, $scope, $location, DataFactory) {
 	console.log('NavbarCtrl loaded');
 
-	$scope.loggedIn = false; //this is not binding when logIn() fires
-	// $scope.loggedIn = AuthFactory.currentUser;
+	$scope.loggedIn = false;
 	console.log("$scope.loggedIn at page load", $scope.loggedIn);
 
 
@@ -32,7 +31,6 @@ app.controller('NavbarCtrl', ['AuthFactory', '$scope', '$location', 'DataFactory
 			console.log("$scope.loggedIn", $scope.loggedIn);
 			AuthFactory.isAuthenticated();
 			$scope.$apply(); //this forces the partial to update $scope
-			// console.log("data from googleLogIn", data);
 		})
 		.catch(function(error){
 			console.log(error);
@@ -45,13 +43,11 @@ app.controller('NavbarCtrl', ['AuthFactory', '$scope', '$location', 'DataFactory
 		AuthFactory.logoutUser()
 		.then(function(data){
 			$scope.loggedIn = false;
-			// $window.location.url= '#!/login'; //which one do I use?
-			$location.path('/'); //which one do I use?
+			$location.path('/');
 			$scope.$apply();
 		}, function(error){
 			console.log('There was an error logging user out');
 		});
-
 	};
 
 
@@ -64,12 +60,10 @@ app.controller('NavbarCtrl', ['AuthFactory', '$scope', '$location', 'DataFactory
 	//
 	$scope.goHome = function(){
 		DataFactory.searchParams = {
-			lodging: false,
+			lodging: false
 		};
-		// console.log("DataFactory params at scrap fire", DataFactory.searchParams);
 		$location.path('/home');
 	};
-
 
 
 }]);

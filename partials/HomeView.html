@@ -18,14 +18,12 @@
 			</div>
 
 			<div class="form-group row">
-				<!-- <label for="origin" class="col-2 column-form-label">Origin</label> -->
 				<div class="col-12">
 					<input class="form-control" id="origin" ng-model="params.origin" type="text" placeholder="Origin">
 				</div>
 			</div>
 
 			<div class="form-group row">
-				<!-- <label for="airPrice" class="col-2 column-form-label">Flights Price Cap</label> -->
 				<div class="col-12">
 					<select class="form-control" name="airPrice" ng-model="params.airPrice">
 						<option value="200">$200</option>
@@ -39,7 +37,6 @@
 			</div>
 
 			<div class="form-group row">
-				<!-- <label for="adults" class="col-2 column-form-label">Adults</label> -->
 				<div class="col-12">
 					<select class="form-control" name="adults" ng-model="params.adults">
 						<option value="">How Many Adventurers?</option>
@@ -50,7 +47,6 @@
 			</div>
 
 			<div class="form-group row">
-				<!-- <label for="lodging" class="col-2 column-form-label">Need Lodging?</label> -->
 				<div class="col-12">
 					<select class="form-control" name="lodging" ng-model="params.lodgingOpt" value="">
 						<option value="hotel">Hotel</option>
@@ -61,7 +57,6 @@
 			</div>
 
 			<div ng-show="params.lodgingOpt" class="form-group row">
-				<!-- <label for="lodgingPriceCap" class="col-2 column-form-label">Lodging Price Cap</label> -->
 				<div class="col-12">
 					<select class="form-control" name="lodgingPriceCap" ng-model="params.lodgingPriceCap">
 						<option value="200">$200</option>
@@ -92,9 +87,6 @@
 				<p>Start</p>
 			</div>
 
-			<!-- <div ng-hide="switch" class="buttons">
-				<a href="#!/flightsView">Next</a>
-			</div> -->
 			<a href="#!/flightsView" ng-hide="switch">
 				<div class="buttons">
 					<p>Next</p>

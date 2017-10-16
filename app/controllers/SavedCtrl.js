@@ -26,7 +26,7 @@ app.controller('SavedCtrl', ['$location', 'DataFactory', 'API', '$scope', 'AuthF
 		delete obj.state;
 		delete obj.street;
 		$scope.searchParams = obj;
-		// console.log("obj passed to removeLodging()", $scope.searchParams);
+
 		API.removeLodging($scope.searchParams, $scope.searchParams.tripID)
 		.then( function(response) {
 			getTrips();
@@ -48,7 +48,7 @@ app.controller('SavedCtrl', ['$location', 'DataFactory', 'API', '$scope', 'AuthF
 	$scope.editTrip = function(obj) {
 		//pass params from saved trip to global searchParams
 		DataFactory.searchParams = obj;
-		//add an editLodging boolean to searchParams
+		//add editLodging boolean to searchParams
 		DataFactory.searchParams.editLodging = true;
 		//navigate to editLodging
 		$location.path('/editLodging');
@@ -58,18 +58,11 @@ app.controller('SavedCtrl', ['$location', 'DataFactory', 'API', '$scope', 'AuthF
 	let getTrips = function(){
 		API.getTrips(user)
 		.then( function(data){
-			//filter by depature date. This also filters out pastTrips
-			// data.forEach( function(currVal) {
-			// 	if (currVal.depDate  !before today date object) {
-			// 		add to $scope.data
-			// 	}
-			// });
 			console.log("data from getTrips in SavedCtrl", data);
 			$scope.data = data;
 		});
 	};
 
 	getTrips();
-
 
 }]);

@@ -28,24 +28,13 @@ p {
 	background-color: rgba(108, 110, 124, 0.8);
 }
 
-// #flexContainer {
-// 	height: 100vh;
-// 	margin-top: -4rem;
-// 	padding-top: 4rem;
-// 	display: flex;
-// }
-
-
 .mainFlexArea {
-	// flex-grow: auto;
 	height: 92vh;
 	display: flex;
 	justify-content: center;
 }
 
 input, select {
-	// width: 50% !important;
-	// display: inline-block;
 	background-color: rgba(255, 255, 255, 0.8) !important;
 	color: rgb(84, 85, 86) !important;
 }
@@ -83,8 +72,6 @@ NavBar
 
 .navBtn:hover {
 	background-color: rgba(47, 61, 71, 0.6);
-	// border-left: 2px solid rgba(255, 255, 255, 0.8);
-	// border-right: 2px solid rgba(255, 255, 255, 0.8);
 }
 
 #logo {
@@ -120,7 +107,6 @@ HomeView
 
 .destResults {
 	display: block;
-	// justify-content: space-around;
 	width: 100%;
 	height: auto;
 	margin: 1rem 0;
@@ -182,7 +168,6 @@ SavedTripView
 
 .savedResults {
 	display: block;
-	// flex-direction: column;
 	width: 100%;
 	height: auto;
 	margin: 1rem 0;
@@ -233,6 +218,9 @@ EditLodgingView
 /*********************
 EditLodgingView End
 *********************/
+/*********************
+Misc
+*********************/
 
 .buttons {
 	display: flex;
@@ -247,60 +235,10 @@ EditLodgingView End
 	background-color: rgba(255, 255, 255, 0.8);
 }
 
-
-
-
 .selected {
 	background-color: rgba(239, 116, 110, 0.8);
 }
 
-/*Dropdown Styling*/
-// .dropdown {
-// 	width: 100%;
-// 	position: relative;
-//     display: inline-block;
-//     margin-top: 1em;
-// }
-
-// .dropBtn {
-// 	width: 100%;
-// 	background-color: #4CAF50;
-//     color: white;
-//     padding: 16px;
-//     font-size: 16px;
-//     border: none;
-//     cursor: pointer;
-// }
-
-// .dropdown-content {
-// 	display: none;
-//     position: absolute;
-//     background-color: #f9f9f9;
-//     min-width: 100%;
-//     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-//     z-index: 1;
-// }
-
-// .dropdown-content a {
-//     color: black;
-//     padding: 12px 16px;
-//     text-decoration: none;
-//     display: block;
-// }
-
-// .dropdown-content a:hover {
-// 	background-color: #f1f1f1;
-// }
-
-// .dropdown:hover .dropdown-content {
-//     display: block;
-// }
-
-// .dropdown:hover .dropbtn {
-//     background-color: #3e8e41;
-// }
-
-/*End Dropdown Styling*/
 
 
 

@@ -5,15 +5,11 @@
 			<div ng-repeat="obj in data.flights" ng-class="{destResults: true, selected: data.selected==obj}" ng-click="updateParams(obj); data.selected=obj">
 				<h4 class="indented">RoundTrip Price: ${{obj.airPrice}}</h4>
 				<h5 class="indented">Outbound Flight: {{obj.outboundOrigin}} to {{obj.outboundDestination}} on {{obj.outboundAirline}}</h5>
-				<!-- <p>From {{obj.outboundOrigin}} to {{obj.outboundDestination}} Operated by {{obj.outboundAirline}}</p> -->
 				<p><strong>Departs:</strong> {{obj.outboundDepTime}} <strong>Arrives:</strong> {{obj.outboundArrTime}}</p>
-				<!-- <p>Sold by {{obj.outboundMktAirline}}</p> -->
 				<p>Flight #: {{obj.outboundFlightNum}} Travel Class: {{obj.outboundTravelClass}}</p>
 
 				<h5 class="indented">Inbound Flight: {{obj.inboundOrigin}} to {{obj.inboundDestination}} on {{obj.inboundAirline}}</h5>
-				<!-- <p>From {{obj.inboundOrigin}} to {{obj.inboundDestination}} Operated by {{obj.inboundAirline}}</p> -->
 				<p><strong>Departs:</strong> {{obj.inboundDepTime}} <strong>Arrives:</strong> {{obj.inboundArrTime}}</p>
-				<!-- <p>Sold by {{obj.inboundMktAirline}}</p> -->
 				<p>Flight #: {{obj.inboundFlightNum}} Travel class: {{obj.inboundTravelClass}}</p>
 				<p class="penaltiesTag">Change Penalties: {{obj.changePenalties}} Refundable: {{obj.refundable}}</p>
 			</div>
